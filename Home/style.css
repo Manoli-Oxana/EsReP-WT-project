@@ -1,0 +1,172 @@
+:root{
+    --bejdarinchis:#302823;
+    --megabej:#FFF2EB;
+    --fiftyshadesofbej:#E8CFBF;
+    --mentauscata: #65B8B5;
+    --minialbastru:#BEE7E8;
+}
+
+body {
+	font-family: Work Sans, sans-serif;
+	color: #5f5f5f;
+	margin: 0;
+	line-height: 1.5;
+    background-color: var(--fiftyshadesofbej);
+}
+
+h1, h2, h3, h4, h5, h6, blockquote {
+	color: var(--bejdarinchis);
+}
+
+header {
+    padding: 1.5rem;
+    vertical-align: middle;
+    display: flex;
+    margin: 0 auto;
+    max-width: 960px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    margin-right: 1.5rem;
+}
+
+header img {
+    height: 5rem;
+    margin: -1rem;
+}
+
+header a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--bejdarinchis);
+    display: inline-block;
+    margin-left: 2.75rem;
+    padding: 0.5rem;
+    border-radius: 15px;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover{
+    background-color: var(--mentauscata);
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.leftmenu{
+    width: 20%;
+    padding: 1rem;
+    margin-left: 0.5rem;
+    background-color: var(--minialbastru)
+}
+
+.right{
+    width: 80%;
+    padding: 2rem;
+    margin-left: 0.5rem;
+    text-align: justify;
+    background-color: var(--megabej);
+}
+
+.leftmenu a{
+    display: block;
+    font-size: 1.5rem;
+    color: var(--bejdarinchis);
+    text-decoration: none;
+    margin-top: 2rem;
+    margin-left: 12%;
+}
+
+.leftmenu ul {
+    list-style-type: none;
+}
+
+.leftmenu ul li a {
+    font-size: 1.25rem;
+    color: var(--bejdarinchis);
+    text-decoration: none;
+    margin-top: 1.5rem;
+    margin-left: 12%;
+}
+
+.leftmenu a:hover{
+    font-weight: bold;
+}
+
+.right img{
+    float: right;
+    width: 40%;
+    padding: 0.5rem;
+}
+
+.right table, tr {
+    border: 2px solid;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.right th, td {
+    border: 2px solid;
+    padding: 0.25rem;
+    text-align: center;
+}
+
+#cabinet {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 300;
+}
+
+#cabinet p {
+    font-size: large;
+    font-weight: bold;
+}
+
+span {
+    color: var(--bejdarinchis);
+}
+
+#form {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-around;
+    font-size: larger;
+}
+
+label{
+    display: inline-block;
+    width: 96.6%;
+    font-weight: bold;
+    color: var(--bejdarinchis);
+}
+
+input[type=email], input[type=password] {
+    width: 96.6%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+}
+
+.button {
+    background-color: var(--minialbastru);
+    color: var(--bejdarinchis);
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: large;
+}
+
+.button:hover{
+    opacity:1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

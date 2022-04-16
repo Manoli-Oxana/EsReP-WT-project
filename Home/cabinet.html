@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>EsReP</title>
+</head>
+<body>
+    <header>
+        <a href="home.html"><img src="../EsReP.png"></a>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="import.html">Import</a>
+            <a href="export.html">Export</a>
+            <a href="cabinet.html">My Cabinet</a>
+        </nav>
+    </header>
+
+    <div class="main">
+        <div class="leftmenu">
+            <a href="resources.html">Resources</a>
+            <ul>
+                <li><a href="food.html">Food</a></li>
+                <li><a href="medicine.html">Medicine</a></li>
+                <li><a href="tools.html">Tools</a></li>
+                <li><a href="fuel.html">Fuel</a></li>
+                <li><a href="makeup.html">Make Up</a></li>
+                <li><a href="office.html">Office Suplies</a></li>
+            </ul>
+            <a href="maintenance.html">Maintenance</a>
+            <ul>
+                <li><a href="spare.html">Spare Parts</a></li>
+                <li><a href="insurance.html">Insurance</a></li>
+                <li><a href="check.html">Check Up</a></li>
+                <li><a href="appliances.html">Appliances</a></li>
+            </ul>
+        </div>
+        <div id="cabinet" class="right">
+            <h2>My Cabinet</h2>
+            <p><span>Registered: </span> 12.04.2022</p>
+            <p><span>Last Log In: </span> 16.04.2022</p>
+            <div id="form">
+                <form method="post">
+                    <section class = "change-email">
+                        <label for="mail">Email</label>
+        
+                            <input type="email" name="mail" id="mail" required
+                            placeholder="example@gmail.com">
+                    </section>
+        
+                    <section class="change-password">
+                        <label for="password">Password</label>
+        
+                            <input type="password" name="password" id="password" required
+                            placeholder="********">
+        
+                        <label for="password2">Repeat the password</label>
+        
+                            <input type="password" name="password2" id="password2" required
+                            placeholder="********">
+                    </section>
+
+                    <div class="buttons">
+                        <a href="../cabinet.html"><input class="button" type="submit" value="Save"></a>
+                        <a href="../index.html"><input class="button" type="button" value="Log Out"></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

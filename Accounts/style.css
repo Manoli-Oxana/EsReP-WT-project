@@ -1,0 +1,73 @@
+:root{
+    --bejdarinchis:#302823;
+    --megabej:#FFF2EB;
+    --fiftyshadesofbej:#E8CFBF;
+    --mentauscata: #65B8B5;
+    --minialbastru:#BEE7E8;
+}
+
+body {
+	font-family: Work Sans, sans-serif;
+	color: var(--bejdarinchis);
+	margin: 0;
+	line-height: 1.5;
+    background-color: var(--megabej);
+}
+
+header {
+    padding: 1.5rem;
+    vertical-align: middle;
+    display: flex;
+    margin: 0 auto;
+    background-color: var(--fiftyshadesofbej);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+header img {
+    height: 5rem;
+    margin: -1rem;
+}
+
+#form {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-around;
+    font-size: larger;
+}
+
+label{
+    display: inline-block;
+    width: 96.6%;
+    font-weight: bold;
+}
+
+input[type=email], input[type=password] {
+    width: 96.6%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+}
+
+
+.button {
+    background-color: var(--minialbastru);
+    color: var(--bejdarinchis);
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: large;
+}
+
+#focus {
+    background-color: var(--mentauscata);
+    color: white;
+}
+
+.button:hover, #register:hover{
+    opacity:1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.13);
+}
