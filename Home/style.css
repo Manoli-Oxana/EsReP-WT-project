@@ -8,7 +8,7 @@
 
 body {
 	font-family: Work Sans, sans-serif;
-	color: #5f5f5f;
+	color: var(--bejdarinchis);
 	margin: 0;
 	line-height: 1.5;
     background-color: var(--fiftyshadesofbej);
