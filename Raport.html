@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raport</title>
+</head>
+<body>
+    <h1>Essential Resource Planner</h1>
+
+    <div role="content_info">
+        <ol role="directory">
+            <li>
+                <a href="#intro">Introduction</a>
+                <ol role="introduction">
+                    <li>
+                        <a href="#purpose">Purpose</a>
+                    </li>
+                    <li>
+                        <a href="#intAud">Intended Audience and Reading Suggestions</a>
+                    </li>
+                    <li>
+                        <a href="#sccope">Product Scope</a>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <a href="#overall">Overall Description</a>
+                <ol>
+                    <li>
+                        <a href="#functions">Product Functions</a>
+                    </li>
+                    <li>
+                        <a href="#class_char">User Classes and Characteristics</a>
+                    </li>
+                    <li>
+                        <a href="#environment">Operating Environment</a>
+                    </li>
+                    <!--<li>
+                        <a href="#doc">User Documentation</a>
+                    </li> -->  
+                    <li>
+                        <a href="#ass_dep">Assumptions and Dependencies</a>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <a href="#ExtIfReq">External Interface Requirements</a>
+                <ol>
+                    <li>
+                        <a href="#comIf">Communication Interfaces</a>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <a href="#features">System Features</a>
+                <ol>
+                    <li>
+                        <a href="#import">Import Data</a>
+                    </li>
+                    <li>
+                        <a href="#export">Export Data</a>
+                    </li>
+                    <li>
+                        <a href="#statistics">Generate Statistics</a>
+                    </li>
+                    <li>
+                        <a href="#appnotices">In-app Notices</a>
+                    </li>
+                    <li>
+                        <a href="#emailnotices">Email Notices</a>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <a href="#nonfuncreq">Other Nonfunctional Requirements</a>
+                <ol>
+                    <li>
+                        <a href="#security">Security Requirements</a>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+
+    <section id="intro">
+        <h2>
+            <span>1. </span>
+            Introduction
+        </h2>
+        <section id="purpose">
+            <h3>
+                <span>1.1 </span>
+                Purpose
+            </h3>
+            <p>
+                This web application is meant to help its users keep track of household/organization’s resources and notify them through emails and in-app notices about the need to either replenish stocks of specific items, maintenance check-ups, and buy/replace spare parts.
+            </p>
+        </section>
+        <section id="intAud">
+            <h3>
+                <span>1.2 </span>
+                Intended Audience and Reading Suggestions
+            </h3>
+            <p>
+                The intended audience for the web application are household and organizational managers
+            </p>
+        </section>
+        <section id="scope">
+            <h3>
+                <span>1.3 </span>
+                Product Scope
+            </h3>
+            <p>
+                The web application provides information and statistics about specific resources and technical deadlines/necessities of a user. The main objective of the app is to provide a easy-to-use record-holder of their household needs which provides timely reminders to keep their stocks full and devices working in the best way.
+            </p>
+        </section>
+    </section>
+    <section id="overall">
+        <h2>
+            <span>2. </span>
+            Overall Description
+        </h2>
+        <section id="functions">
+            <h3>
+                <span>2.1 </span>
+                Product Functions
+            </h3>
+            <p>
+                The app will be able to keep track of the items and dates that have been imported by the user and provide reminders in the form of in-app notices and emails to update the database, refill the stocks of specific items/categories, and/or provide maintenance or check up on different devices.
+            </p>
+        </section>
+        <section id="class_char">
+            <h3>
+                <span>2.2 </span>
+                User Classes and Characteristics
+            </h3>
+            <table>
+                <tr>
+                    <td>
+                        <h4>Unauthorized User (guest)</h4>
+                        <p>users that don’t have an account and/or are first-time visitors of the app</p>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>can view the landing page and the overall website without in-use databases </li>
+                            <li>can access the login and register pages</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Authorized User</h4>
+                        <p>users that have logged into their accounts</p>
+                    </td>
+                    <td>
+                        <ul>
+                            <li> can access the home page</li>
+                            <li>can access the databases they have imported</li>
+                            <li>can import and export databases</li>
+                            <li>can generate statistic</li>
+                            <li>can set time-limits and reminders</li>
+                            <li>can access the personal cabinet where they can change their personal data</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </section>
+        <section id="environment">
+            <h3>
+                <span>2.3 </span>
+                Operating Environment
+            </h3>
+            <p>The operating environment for the app will be any browser with support for HTML5 (FireFox, Chrome, Safari, etc.) on any operating system. (Mindows, Mac OS, etc.)</p>
+        </section>
+        <section id="ass_dep">
+            <h3>
+                <span>2.5 </span>
+                Assumptions and Dependencies
+            </h3>
+            <p>To make possible the import/export feature, an <a href="https://onlinecode.org/open-source-pdf-generation-libraries-php/">additional library</a> will be selected from the available open source ones.</p>
+        </section>
+    </section>
+    <section id="ExtIfReq">
+        <h2>
+            <span>3. </span>
+            External Interface Requirements
+        </h2>
+        <section id="comIf">
+            <h3>Communication Interfaces</h3>
+            <p>In order to ensure comunication, the web application will use Hypertext Transfer Protocol (HTTP)</p>
+        </section>
+    </section>
+    <section id="features">
+        <h2>
+            <span>4. </span>
+            System Features
+        </h2>
+        <section id="import">
+            <h3>
+                <span>4.1 </span>
+                Import Data
+            </h3>
+            <p>The user will be able to import data if they already have a CSV/XML database of the items they want to keep track of and/or introduce the data manually.
+            </p>
+        </section>
+        <section id="export">
+            <h3>
+                <span>4.2 </span>
+                Export Data
+            </h3>
+            <p>The user will be able to export the data they have introduced into the app’s database as CSV/XML file.</p>
+        </section>
+        <section id="statistics">
+            <h3>
+                <span>4.3 </span>
+                Generate Statistics
+            </h3>
+            <p>The user will have the option to generate statistics based on their data and view them as HTML or PDF files.</p>
+        </section>
+        <section id="appnotices">
+            <h3>
+                <span>4.4 </span>
+                In-app Notices
+            </h3>
+            <p>The app will provide in-app notices about updates and/or necessary maintenance.</p>
+        </section>
+        <section id="emailnotices">
+            <h3>
+                <span>4.5 </span>
+                Email Notices
+            </h3>
+            <p>The app will send out emails to the users to remind them of necessary updates and/or maintenance.</p>
+        </section>
+    </section>
+</body>
+</html>
+
+
+<style>
+    body {
+  max-width: 21cm;
+  margin: auto;
+  line-height: 1.6;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+}
+
+header > h1 {
+  margin: 0;
+  font-size: 3em;
+  padding-top: 4em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+table{
+    border: 2px solid;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr, td {
+    border: 2px solid;
+    padding-left: 10px;
+    border-collapse: collapse;
+}
+</style>

@@ -44,7 +44,7 @@ header nav a:hover{
     background-color: var(--mentauscata);
 }
 
-.main{
+main{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
