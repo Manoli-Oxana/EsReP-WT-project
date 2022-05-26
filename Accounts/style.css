@@ -21,6 +21,22 @@ header {
     margin: 0 auto;
     background-color: var(--fiftyshadesofbej);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    justify-content: space-between;
+    align-items: center;
+}
+header a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--bejdarinchis);
+    display: inline-block;
+    margin-left: 2.75rem;
+    padding: 0.5rem;
+    border-radius: 15px;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover{
+    background-color: var(--mentauscata);
 }
 
 header img {
@@ -51,7 +67,7 @@ input[type=email], input[type=password] {
 
 
 .button {
-    background-color: var(--minialbastru);
+    background-color: var(--mentauscata);
     color: var(--bejdarinchis);
     padding: 16px 20px;
     margin: 8px 0;
@@ -62,10 +78,7 @@ input[type=email], input[type=password] {
     font-size: large;
 }
 
-#focus {
-    background-color: var(--mentauscata);
-    color: white;
-}
+
 
 .button:hover, #register:hover{
     opacity:1;

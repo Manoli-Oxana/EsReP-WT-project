@@ -1,31 +1,46 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>EsReP</title>
+</head>
+<body>
+    <header>
+        <a href="../index.php"><img src="../EsReP.png"></a>
+        <nav>
+            <a href="../index.php">Home</a>
+            <a href="login.php">Log In</a>
+            <a href="register.php">Register</a>
+        </nav>
+    </header>
 
-    $db = new mysqli ('localhost', 'root', '', 'esrep');
+    <div id="form">
+        <form method="post" action="../includes/login.inc.php">
+            <label for="mail">Email</label>
 
-    if (mysqli_connect_errno()){
-        die ('Connection failed');
-    }
+                <input type="email" name="mail" id="mail" required
+                placeholder="example@gmail.com">
 
-    if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $myusername = mysqli_real_escape_string($db, $_POST['mail']);
-        $mypassword = mysqli_real_escape_string($db, $_POST['password']);
-        $date = time();
+            <label for="password">Password</label>
 
-        $sql = "SELECT id FROM users WHERE mail = '$myusername' and psswd = '$mypassword'";
-        $result = mysqli_query($db, $sql);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        
-        $count = mysqli_num_rows($result);
+                <input type="password" name="password" id="password" required
+                placeholder="********">
 
-        if($count == 1){
-            //mysqli_query($db, "UPDATE users SET logged = '{$date}' WHERE ID = '{$result}'");
-
-            header('Location: ../Home/home.html');
-            exit;
-        }
-        else{
-            echo "username or password not valid"; //to make a pop up
-        }
-    }
-
-?>
+                <button  class="button" type="submit" name="submit">Log In</button>
+                <?php
+            if(isset($_GET["error"])){
+                if($_GET["error"] == "wronglogin"){
+                echo "<p>Incorrect login information!</p>";
+                 }   
+                 else  if($_GET["error"] == "updatefailed"){
+                    echo "<p>Something went wrong!</p>";
+                     }
+            }         
+            ?>
+            </form>
+    </div>
+</body>
+</html>
