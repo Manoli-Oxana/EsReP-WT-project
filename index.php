@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +15,16 @@
     <header>
         <img id="logo" src="EsReP.png">
         <nav>
-            <a href="index.html">Home</a>
-            <a href="Accounts/login.html">Log In</a>
-            <a href="Accounts/register.html">Register</a>
+            <a href="index.php">Home</a>
+            <?php
+             if(isset($_SESSION["id"])){
+                header('location: Home/home.html');
+             }
+             else{
+               echo "<a href='Accounts/login.php'>Log In</a>";
+               echo "<a href='Accounts/register.php'>Register</a>";
+             }
+            ?>
         </nav>
     </header>
     
