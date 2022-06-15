@@ -1,48 +1,54 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>EsReP</title>
+</head>
+<body>
+    <header>
+        <a href="../index.php"><img src="../EsReP.png"></a>
+        <nav>
+            <a href="../index.php">Home</a>
+            <a href="login.php">Log In</a>
+            <a href="register.php">Register</a>
+        </nav>
+    </header>
 
-    $db = new mysqli ('localhost', 'root', '', 'esrep');
+    <div id="form">
+        <form method="post" action="../includes/register.inc.php">
+            <label for="mail">Email</label>
+                <input type="email" name="mail" id="mail" required
+                placeholder="example@gmail.com">
 
-    if (mysqli_connect_errno()){
-        die ('Connection failed');
-    }
+            <label for="password">Password</label>
 
-    if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $myusername = mysqli_real_escape_string($db, $_POST['mail']);
-        $mypassword = mysqli_real_escape_string($db, $_POST['password']);
-        $mypasswrodcheck = mysqli_real_escape_string($db, $_POST['password2']);
+                <input type="password" name="password" id="password" required
+                placeholder="********">
 
-        if ($myusername != "" && $mypassword != "" && $mypasswrodcheck !=""){
-            if($mypassword === $mypasswrodcheck){
-                if (strlen($mypassword) >= 5 && strpbrk($mypassword, "#1234567890") != false){
-                    $query = mysqli_query($db, "SELECT * FROM users where mail = '{$myusername}'");
-                    if (mysqli_num_rows($query)==0){
-                        $id='';
+            <label for="password2">Repeat the password</label>
 
-                        $date=time();
-
-                        mysqli_query($db, "INSERT INTO users VALUES ( '{$id}', '{$myusername}', '{$mypassword}', '{$date}', '{$date}')");
-
-                        $query = mysqli_query($db, "SELECT * FROM users WHERE mail='{$myusername}'");
-                        if (mysqli_num_rows($query)==1){
-
-                            header('Location: ../Home/home.html');
-                            exit;
-                        }
-                        else
-                            echo 'An error occurred and your account was not created. Please try again.';
-                    }
-                    else
-                        echo 'This email already has an user attached to it. Please log in, or use another email.';
-                }
-                else
-                    echo 'Your password is not strong enough. Please use another';
-            }
-            else
-                echo 'Your passwords did not match.';
-        }
-        else
-            echo 'Please fill out all required fields.';
-
-    }
-
-?>
+                <input type="password" name="password2" id="password2" required
+                placeholder="********">
+        
+            <button  class="button" type="submit" name="submit">Register</button>
+            
+            <?php
+            if(isset($_GET["error"])){
+            if($_GET["error"] == "passwordsdontmatch"){
+                echo "<p>Passwords don't match!</p> ";
+                    }   
+             else if  ($_GET["error"] == "emailtaken"){
+                echo "<p>Email already taken!</p> ";
+                }  
+             else if  ($_GET["error"] == "none"){
+                echo "<p>You have registered!</p>";
+                    } 
+                }         
+            ?>
+        </form>
+    </div>
+</body>
+</html>
