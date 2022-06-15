@@ -1,15 +1,6 @@
 <?php
  
-function pwdMatch($mypassword, $mypassword2){
-    $result;
-    if ($mypassword !== $mypassword2) {
-        $result = true;
-    }
-    else {
-        $result = false;
-    }
-    return $result;
-}
+
 
 function emailExists($conn, $myemail){
     $sql = "SELECT * FROM users WHERE mail = ?;";
@@ -92,4 +83,39 @@ function loginUser($conn, $myemail, $mypassword){
        
 
     }
+}
+
+function changePwd($conn, $oldPwd, $password1, $password2){
+    session_start();
+    $id = $_SESSION["id"];
+
+    $sql = "SELECT psswd FROM users WHERE id= '$id';";
+    $result = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($result) === 1)
+        $row = mysqli_fetch_assoc($result);
+    $checkPwd = password_verify($oldPwd, $row["psswd"]);
+
+    if($checkPwd === false){
+        header("location:  ../Home/cabinet.php?error=wrongOldPass");
+        exit();
+    }
+    else if($password1 !== $password2){
+        header("location:  ../Home/cabinet.php?error=passdontmatch");
+        exit();
+    } else if ($checkPwd === true){
+        $sql = "UPDATE users SET psswd = (?) WHERE id= '$id';";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)){
+            header("location:  ../Home/cabinet.php?error=updatefailed");
+            exit();
+        }
+    
+        $hashedPwd = password_hash($password1, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, "s", $hashedPwd);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../Home/cabinet.php?error=none");
+    exit();
+}
 }
