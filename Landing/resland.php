@@ -11,16 +11,16 @@
     <header>
         <img id="logo" src="../EsReP.png">
         <nav>
-            <a href="../index.html">Home</a>
-            <a href="../Accounts/login.html">Log In</a>
-            <a href="../Accounts/register.html">Register</a>
+            <a href="../index.php">Home</a>
+            <a href="../Accounts/login.php">Log In</a>
+            <a href="../Accounts/register.php">Register</a>
         </nav>
     </header>
     
     <main>
         <div class="leftmenu">
-            <a id="focus" href="resland.html">Resources</a>
-            <a id="other" href="mainland.html">Maintenance</a>
+            <a id="focus" href="resland.php">Resources</a>
+            <a id="other" href="mainland.php">Maintenance</a>
         </div>
         <div class="rightmenu">
             <h3>Resources</h3>
