@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,31 +12,31 @@
 </head>
 <body>
     <header>
-        <a href="home.html"><img src="../EsReP.png"></a>
+        <a href="home.php"><img src="../EsReP.png"></a>
         <nav>
-            <a href="home.html">Home</a>
-            <a href="../features/import.html">Import</a>
-            <a href="../features/export.html">Export</a>
-            <a href="cabinet.html">My Cabinet</a>
+            <a href="home.php">Home</a>
+            <a href="../features/import.php">Import</a>
+            <a href="../features/export.php">Export</a>
+            <a href="cabinet.php">My Cabinet</a>
         </nav>
     </header>
 
     <main>
         <div class="leftmenu">
-            <a href="../Resources/resources.html">Resources</a>
+            <a href="../Resources/resources.php">Resources</a>
             <ul>
-                <li><a href="../Resources/food.html">Food</a></li>
-                <li><a href="../Resources/medicine.html">Medicine</a></li>
-                <li><a href="../Resources/fuel.html">Fuel</a></li>
-                <li><a href="../Resources/makeup.html">Make Up</a></li>
-                <li><a href="../Resources/officesupplies.html">Office Suplies</a></li>
-                <li><a href="../Resources/tools.html">Tools</a></li>
+                <li><a href="../Resources/food.php">Food</a></li>
+                <li><a href="../Resources/medicine.php">Medicine</a></li>
+                <li><a href="../Resources/fuel.php">Fuel</a></li>
+                <li><a href="../Resources/makeup.php">Make Up</a></li>
+                <li><a href="../Resources/officesupplies.php">Office Suplies</a></li>
+                <li><a href="../Resources/tools.php">Tools</a></li>
             </ul>
-            <a href="../Maintenance/maintenance.html">Maintenance</a>
+            <a href="../Maintenance/maintenance.php">Maintenance</a>
             <ul>
-                <li><a href="../Maintenance/spare.html">Spare Parts</a></li>
-                <li><a href="../Maintenance/insurance.html">Insurance</a></li>
-                <li><a href="../Maintenance/check.html">Check Up</a></li>
+                <li><a href="../Maintenance/spare.php">Spare Parts</a></li>
+                <li><a href="../Maintenance/insurance.php">Insurance</a></li>
+                <li><a href="../Maintenance/check.php">Check Up</a></li>
             </ul>
         </div>
         <div class="right">
