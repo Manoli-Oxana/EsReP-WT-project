@@ -20,7 +20,7 @@
         if($count == 1){
             //mysqli_query($db, "UPDATE users SET logged = '{$date}' WHERE ID = '{$result}'");
 
-            header('Location: ../Home/home.html');
+            header('Location: ../Home/home.php');
             exit;
         }
         else{
