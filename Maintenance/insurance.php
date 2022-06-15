@@ -9,31 +9,31 @@
   </head>
   <body>
     <header>
-      <a href="../Home/home.html"><img src="../EsReP.png" /></a>
+      <a href="../Home/home.php"><img src="../EsReP.png" /></a>
       <nav>
-        <a href="../Home/home.html">Home</a>
-        <a href="../features/import.html">Import</a>
-        <a href="../features/export.html">Export</a>
-        <a href="../Home/cabinet.html">My Cabinet</a>
+        <a href="../Home/home.php">Home</a>
+        <a href="../features/import.php">Import</a>
+        <a href="../features/export.php">Export</a>
+        <a href="../Home/cabinet.php">My Cabinet</a>
       </nav>
     </header>
 
     <main>
       <div class="leftmenu">
-        <a href="../Resources/resources.html">Resources</a>
+        <a href="../Resources/resources.php">Resources</a>
         <ul>
-          <li><a href="../Resources/food.html">Food</a></li>
-          <li><a href="../Resources/medicine.html">Medicine</a></li>
-          <li><a href="../Resources/fuel.html">Fuel</a></li>
-          <li><a href="../Resources/makeup.html">Make Up</a></li>
-          <li><a href="../Resources/officesupplies.html">Office Suplies</a></li>
-          <li><a href="../Resources/tools.html">Tools</a></li>
+          <li><a href="../Resources/food.php">Food</a></li>
+          <li><a href="../Resources/medicine.php">Medicine</a></li>
+          <li><a href="../Resources/fuel.php">Fuel</a></li>
+          <li><a href="../Resources/makeup.php">Make Up</a></li>
+          <li><a href="../Resources/officesupplies.php">Office Suplies</a></li>
+          <li><a href="../Resources/tools.php">Tools</a></li>
         </ul>
-        <a href="maintenance.html">Maintenance</a>
+        <a href="maintenance.php">Maintenance</a>
         <ul>
-          <li><a href="spare.html">Spare Parts</a></li>
-          <li><a id="focus" href="insurance.html">Insurance</a></li>
-          <li><a href="check.html">Check Up</a></li>
+          <li><a href="spare.php">Spare Parts</a></li>
+          <li><a id="focus" href="insurance.php">Insurance</a></li>
+          <li><a href="check.php">Check Up</a></li>
         </ul>
       </div>
       <div class="right">
