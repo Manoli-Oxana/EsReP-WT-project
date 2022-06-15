@@ -18,7 +18,7 @@
             <a href="index.php">Home</a>
             <?php
              if(isset($_SESSION["id"])){
-                header('location: Home/home.html');
+                header('location: Home/home.php');
              }
              else{
                echo "<a href='Accounts/login.php'>Log In</a>";
@@ -31,8 +31,8 @@
     
     <main>
         <div id="leftmenu">
-            <a href="Landing/resland.html">Resources</a>
-            <a href="Landing/mainland.html">Maintenance</a>
+            <a href="Landing/resland.php">Resources</a>
+            <a href="Landing/mainland.php">Maintenance</a>
         </div>
         <div id="rightmenu">
             <h3>About the app</h3>
