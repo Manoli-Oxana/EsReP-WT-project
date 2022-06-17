@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<supplies>
+  <stock>
+	<name>Insurance for car</name>
+	<quantity>2</quantity>
+	<unit>pieces</unit>
+	<type>insurance</type>
+	<supply>2022.02.02</supply>
+	<notice>2023.03.04</notice>
+    </stock>
+ <stock>
+	<name>Health Insurance</name>
+	<quantity>4</quantity>
+	<unit>pieces</unit>
+	<type>insurance</type>
+	<supply>2022.05.02</supply>
+	<notice>2022.12.04</notice>
+    </stock>
+ <stock>
+	<name>Identity Theft Protection</name>
+	<quantity>2</quantity>
+	<unit>pieces</unit>
+	<type>insurance</type>
+	<supply>2022.03.12</supply>
+	<notice>2023.01.10</notice>
+    </stock>
+ <stock>
+	<name>Long Term Disability Insurance</name>
+	<quantity>3</quantity>
+	<unit>pieces</unit>
+	<type>insurance</type>
+	<supply>2022.04.20</supply>
+	<notice>2024.12.04</notice>
+    </stock>
+ <stock>
+	<name>Valve Check</name>
+	<quantity>2</quantity>
+	<unit>pieces</unit>
+	<type>check-up</type>
+	<supply>2022.05.02</supply>
+	<notice>2022.12.04</notice>
+    </stock>
+ <stock>
+	<name>Motor Check</name>
+	<quantity>2</quantity>
+	<unit>pieces</unit>
+	<type>check-up</type>
+	<supply>2022.05.02</supply>
+	<notice>2022.10.10</notice>
+    </stock>
+ <stock>
+	<name>Gas Pump Check</name>
+	<quantity>1</quantity>
+	<unit>pieces</unit>
+	<type>check-up</type>
+	<supply>2022.05.02</supply>
+	<notice>2022.10.30</notice>
+    </stock>
+ <stock>
+	<name>Tires Check</name>
+	<quantity>8</quantity>
+	<unit>pieces</unit>
+	<type>check-up</type>
+	<supply>2022.05.02</supply>
+	<notice>2022.11.04</notice>
+    </stock>
+</supplies>

@@ -1,0 +1,77 @@
+[
+  {
+	"name": "Light Bulb",
+	"quantity": 10,
+	"unit": "pieces",
+	"type": "tools",
+	"supply": "2022.02.02",
+	"notice": "2022.03.02"
+  },
+  {
+	"name": "Hammer",
+	"quantity": 5,
+	"unit": "pieces",
+	"type": "tools",
+	"supply": "2022.02.02",
+	"notice": "2022.08.02"
+  },
+  {
+	"name": "Nails",
+	"quantity": 30,
+	"unit": "pieces",
+	"type": "tools",
+	"supply": "2022.02.28",
+	"notice": "2022.04.02"
+  },
+  {
+	"name": "Screwdriver",
+	"quantity": 30,
+	"unit": "pieces",
+	"type": "tools",
+	"supply": "2022.03.10",
+	"notice": "2022.04.02"
+  },
+ {
+	"name": "Vacuum cleaner bag",
+	"quantity": 4,
+	"unit": "pieces",
+	"type": "spare-parts",
+	"supply": "2022.02.02",
+	"notice": "2022.04.02"
+  },
+{
+	"name": "Spare part for Compressor",
+	"quantity": 2,
+	"unit": "pieces",
+	"type": "spare-parts",
+	"supply": "2022.03.10",
+	"notice": "2022.05.02"
+  },
+{
+	"name": "Heater Plate",
+	"quantity": 3,
+	"unit": "pieces",
+	"type": "spare-parts",
+	"supply": "2022.03.10",
+	"notice": "2022.05.02"
+  },
+{
+	"name": "Electronic Switch",
+	"quantity": 6,
+	"unit": "pieces",
+	"type": "spare-parts",
+	"supply": "2022.03.15",
+	"notice": "2022.05.27"
+  },
+{
+	"name": "Cable Clamp",
+	"quantity": 5,
+	"unit": "pieces",
+	"type": "spare-parts",
+	"supply": "2022.02.10",
+	"notice": "2022.05.20"
+  }
+
+]
+
+  
