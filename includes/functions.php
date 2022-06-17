@@ -1,6 +1,16 @@
 <?php
  
 
+ function pwdMatch($mypassword, $mypassword2){
+    $result;
+    if ($mypassword !== $mypassword2) {
+        $result = true;
+    }
+    else {
+        $result = false;
+    }
+    return $result;
+}
 
 function emailExists($conn, $myemail){
     $sql = "SELECT * FROM users WHERE mail = ?;";
@@ -99,7 +109,7 @@ function changePwd($conn, $oldPwd, $password1, $password2){
         header("location:  ../Home/cabinet.php?error=wrongOldPass");
         exit();
     }
-    else if($password1 !== $password2){
+    else if(pwdMatch($password1,$password2) !== false ){
         header("location:  ../Home/cabinet.php?error=passdontmatch");
         exit();
     } else if ($checkPwd === true){
