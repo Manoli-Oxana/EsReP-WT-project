@@ -37,8 +37,21 @@
             </ul>
         </div>
         <div class="right">
-            <h2>Export</h2>
-            <button>Download Data</button>
+            <form method="post" action="../includes/export.inc.php" name="export" >
+            <button  class="button" type="exportCsv" name="exportCsv">CSV Export</button>
+            <button  class="button" type="exportJson" name="exportJson">JSON Export</button>
+            <button  class="button" type="exportXml" name="exportXml">XML Export</button>
+            <?php
+            if(isset($_GET["error"])){
+            if($_GET["error"] == "problemexporting"){
+                echo "<p>Problem exporting your data!</p> ";
+                    }    
+             else if  ($_GET["error"] == "none"){
+                echo "<p>CSV Data Imported into database!</p>";
+                    } 
+                }         
+            ?>
+        </form>
             <button>Download Statistics</button>
         </div>
     <main>
