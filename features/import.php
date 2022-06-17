@@ -36,10 +36,26 @@
                 <li><a href="../Maintenance/check.php">Check Up</a></li>
             </ul>
       </div>
+
       <div class="right">
         <h2>Import your data!</h2>
         <h3>You can use CSV, JSON or XML...</h3>
-        <button type="button">Import!</button>
+        <form method="post" action="../includes/import.inc.php" name="upload" enctype="multipart/form-data">
+            
+            <input type="file" name="file" accept=".csv, .json, .xml">
+            <button  class="button" type="import" name="import">Import!</button>
+
+            <?php
+            if(isset($_GET["error"])){
+            if($_GET["error"] == "problemimporting"){
+                echo "<p>Problem importing your data!</p> ";
+                    }    
+             else if  ($_GET["error"] == "none"){
+                echo "<p>CSV Data Imported into database!</p>";
+                    } 
+                }         
+            ?>
+        </form>
       </div>
     </main>
   </body>
