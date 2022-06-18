@@ -1,21 +1,27 @@
-:root{
-    --bejdarinchis:#302823;
-    --megabej:#FFF2EB;
-    --fiftyshadesofbej:#E8CFBF;
-    --mentauscata: #65B8B5;
-    --minialbastru:#BEE7E8;
+:root {
+    --bejdarinchis: #302823;
+    --megabej: #fff2eb;
+    --fiftyshadesofbej: #e8cfbf;
+    --mentauscata: #65b8b5;
+    --minialbastru: #bee7e8;
 }
 
 body {
-	font-family: Work Sans, sans-serif;
-	color: #5f5f5f;
-	margin: 0;
-	line-height: 1.5;
+    font-family: Work Sans, sans-serif;
+    color: #5f5f5f;
+    margin: 0;
+    line-height: 1.5;
     background-color: var(--fiftyshadesofbej);
 }
 
-h1, h2, h3, h4, h5, h6, blockquote {
-	color: var(--bejdarinchis);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote {
+    color: var(--bejdarinchis);
 }
 
 header {
@@ -48,24 +54,24 @@ header a {
     transition: color 0.3s ease;
 }
 
-header nav a:hover{
+header nav a:hover {
     background-color: var(--mentauscata);
 }
 
-main{
+main {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
 
-.leftmenu{
+.leftmenu {
     width: 20%;
     padding: 1rem;
     margin-left: 0.5rem;
-    background-color: var(--minialbastru)
+    background-color: var(--minialbastru);
 }
 
-.right{
+.right {
     width: 80%;
     padding: 2rem;
     margin-left: 0.5rem;
@@ -73,7 +79,7 @@ main{
     background-color: var(--megabej);
 }
 
-.leftmenu a{
+.leftmenu a {
     display: block;
     font-size: 1.5rem;
     color: var(--bejdarinchis);
@@ -94,28 +100,30 @@ main{
     margin-left: 12%;
 }
 
-.leftmenu a:hover{
+.leftmenu a:hover {
     font-weight: bold;
 }
 
-#focus{
+#focus {
     font-weight: bold;
-    cursor:default;
+    cursor: default;
 }
 
-.right img{
+.right img {
     float: right;
     width: 40%;
     padding: 0.5rem;
 }
 
-.right table, tr {
+.right table,
+tr {
     border: 2px solid;
     border-collapse: collapse;
     width: 100%;
 }
 
-.right th, td {
+.right th,
+td {
     border: 2px solid;
     padding: 0.25rem;
     text-align: center;
@@ -144,14 +152,15 @@ span {
     font-size: larger;
 }
 
-label{
+label {
     display: inline-block;
     width: 96.6%;
     font-weight: bold;
     color: var(--bejdarinchis);
 }
 
-input[type=email], input[type=password] {
+input[type="email"],
+input[type="password"] {
     width: 96.6%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -171,7 +180,21 @@ input[type=email], input[type=password] {
     font-size: large;
 }
 
-.button:hover{
-    opacity:1;
+.button:hover {
+    opacity: 1;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.small-image {
+    width: 5% !important;
+    float: none !important;
+}
+
+.button {
+    width: 5%;
+}
+
+.after-table {
+    display: flex;
+    align-items: center;
 }

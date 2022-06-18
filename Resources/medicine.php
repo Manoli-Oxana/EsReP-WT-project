@@ -40,38 +40,40 @@
         </div>
         <div class="right">
             <h3>Medicine</h3>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Suply Date</th>
-                    <th>Notice Date</th>
-                </tr>
-                <tr>
-                    <td>Paracetamol</td>
-                    <td>3 blistere</td>
-                    <td>12.02.2022</td>
-                    <td>31.05.2022</td>
-                </tr>
-                <tr>
-                    <td>Nurofen</td>
-                    <td>6 blistere</td>
-                    <td>12.02.2022</td>
-                    <td>31.05.2022</td>
-                </tr>
-                <tr>
-                    <td>Antinevralgic</td>
-                    <td>2 blistere</td>
-                    <td>12.02.2022</td>
-                    <td>31.05.2022</td>
-                </tr>
-                <td>Parasinus</td>
-                <td>4 blistere</td>
-                <td>12.02.2022</td>
-                <td>31.05.2022</td>
-                </tr>
-            </table>
+            <form method="post">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Supply Date</th>
+                        <th>Notice Date</th>
+                        <th>Options</th>
+                    </tr>
+                    <?php
+                    require_once "../includes/functions.php";
+                    createTable("Medicine");
+                    ?>
+                </table>
+            </form>
+            <div class="after-table">
+                <form method="post">
+                    <label for="new-row-icon">Insert a new row</label>
+                    <input type="image" src="../query_icons/new_icon.png" name="new" class="button" width="10% !important" id="new-row-icon">
+                </form>
+            </div>
+            <?php
+            // var_dump($_POST);
+            $values = ["newName", "newQuantity", "newUnit", "newSupply", "newNotice"];
+            foreach ($values as $value) {
+                if (!isset($_POST[$value])) {
+                    return;
+                }
+            }
+            insertNewRow($_SESSION["connection"], "Medicine", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+            ?>
         </div>
     </main>
 </body>
+
 </html>

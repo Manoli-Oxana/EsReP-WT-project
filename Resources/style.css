@@ -1,9 +1,9 @@
 :root {
     --bejdarinchis: #302823;
-    --megabej: #FFF2EB;
-    --fiftyshadesofbej: #E8CFBF;
-    --mentauscata: #65B8B5;
-    --minialbastru: #BEE7E8;
+    --megabej: #fff2eb;
+    --fiftyshadesofbej: #e8cfbf;
+    --mentauscata: #65b8b5;
+    --minialbastru: #bee7e8;
 }
 
 body {
@@ -14,7 +14,13 @@ body {
     background-color: var(--fiftyshadesofbej);
 }
 
-h1,h2,h3,h4,h5,h6,blockquote {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote {
     color: var(--bejdarinchis);
 }
 
@@ -62,7 +68,7 @@ main {
     width: 20%;
     padding: 1rem;
     margin-left: 0.5rem;
-    background-color: var(--minialbastru)
+    background-color: var(--minialbastru);
 }
 
 .right {
@@ -98,9 +104,9 @@ main {
     font-weight: bold;
 }
 
-#focus{
+#focus {
     font-weight: bold;
-    cursor:default;
+    cursor: default;
 }
 
 .right img {
@@ -120,4 +126,18 @@ td {
     border: 2px solid;
     padding: 0.25rem;
     text-align: center;
+}
+
+.small-image {
+    width: 5% !important;
+    float: none !important;
+}
+
+.button {
+    width: 5%;
+}
+
+.after-table {
+    display: flex;
+    align-items: center;
 }

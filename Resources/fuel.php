@@ -40,27 +40,40 @@
         </div>
         <div class="right">
             <h3>Fuel</h3>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Suply Date</th>
-                    <th>Notice Date</th>
-                </tr>
-                <tr>
-                    <td>Benzina</td>
-                    <td>150l</td>
-                    <td>01.02.2022</td>
-                    <td>01.03.2022</td>
-                </tr>
-                <tr>
-                    <td>Motorina</td>
-                    <td>100l</td>
-                    <td>01.02.2022</td>
-                    <td>01.03.2022</td>
-                </tr>
-            </table>
+            <form method="post">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Supply Date</th>
+                        <th>Notice Date</th>
+                        <th>Options</th>
+                    </tr>
+                    <?php
+                    require_once "../includes/functions.php";
+                    createTable("Fuel");
+                    ?>
+                </table>
+            </form>
+            <div class="after-table">
+                <form method="post">
+                    <label for="new-row-icon">Insert a new row</label>
+                    <input type="image" src="../query_icons/new_icon.png" name="new" class="button" width="10% !important" id="new-row-icon">
+                </form>
+            </div>
+            <?php
+            // var_dump($_POST);
+            $values = ["newName", "newQuantity", "newUnit", "newSupply", "newNotice"];
+            foreach ($values as $value) {
+                if (!isset($_POST[$value])) {
+                    return;
+                }
+            }
+            insertNewRow($_SESSION["connection"], "Fuel", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+            ?>
         </div>
     </main>
 </body>
+
 </html>

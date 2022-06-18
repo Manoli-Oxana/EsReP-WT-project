@@ -40,74 +40,41 @@
         </div>
         <div class="right">
             <h3>Food</h3>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Suply Date</th>
-                    <th>Notice Date</th>
-                </tr>
-                <tr>
-                    <td>Mere</td>
-                    <td>15kg</td>
-                    <td>15.03.2022</td>
-                    <td>15.04.2022</td>
-                </tr>
-                <tr>
-                    <td>Pere</td>
-                    <td>12kg</td>
-                    <td>15.03.2022</td>
-                    <td>15.04.2022</td>
-                </tr>
-                <tr>
-                    <td>Prune</td>
-                    <td>10,5kg</td>
-                    <td>15.03.2022</td>
-                    <td>15.04.2022</td>
-                </tr>
-                <td>Castraveti</td>
-                <td>13 kg</td>
-                <td>15.03.2022</td>
-                <td>15.04.2022</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-            </table>
+            <form method="post">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Supply Date</th>
+                        <th>Notice Date</th>
+                        <th>Options</th>
+                    </tr>
+                    <?php
+                    require_once "../includes/functions.php";
+                    createTable("Food");
+                    ?>
+                </table>
+            </form>
+            <div class="after-table">
+                <form method="post">
+                    <label for="new-row-icon">Insert a new row</label>
+                    <input type="image" src="../query_icons/new_icon.png" name="new" class="button" width="10% !important"
+                        id="new-row-icon">
+                </form>
+            </div>
+            <?php
+            // var_dump($_POST);
+            $values = ["newName", "newQuantity", "newUnit", "newSupply", "newNotice"];
+            foreach ($values as $value) {
+                if (!isset($_POST[$value])) {
+                    return;
+                }
+            }
+            insertNewRow($_SESSION["connection"], "Food", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+            ?>
         </div>
     </main>
 </body>
+
 </html>

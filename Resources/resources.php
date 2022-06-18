@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>EsReP</title>
 </head>
+
 <body>
     <header>
         <a href="../Home/home.php"><img src="../EsReP.png"></a>
@@ -38,39 +41,49 @@
         </div>
         <div class="right">
             <h3>Resources</h3>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Suply Date</th>
-                    <th>Notice Date</th>
-                </tr>
-                <tr>
-                    <td>Mere</td>
-                    <td>15kg</td>
-                    <td>15.03.2022</td>
-                    <td>15.04.2022</td>
-                </tr>
-                <tr>
-                    <td>Paracetamol</td>
-                    <td>3 blistere</td>
-                    <td>12.02.2022</td>
-                    <td>31.05.2022</td>
-                </tr>
-                <tr>
-                    <td>Bec</td>
-                    <td>10 buc.</td>
-                    <td>02.01.2022</td>
-                    <td>31.05.2022</td>
-                </tr>
-                <tr>
-                    <td>Hârtie A4</td>
-                    <td>2 top</td>
-                    <td>25.03.2022</td>
-                    <td>25.09.2022</td>
-                </tr>
-            </table>
+
+            <form method="post">
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Supply Date</th>
+                        <th>Notice Date</th>
+                        <th>Options</th>
+                    </tr>
+                    <?php
+                    require_once "../includes/functions.php";
+                    createTable();
+                    ?>
+                </table>
+            </form>
+            <div class="after-table">
+                <form method="post">
+                    <label for="new-row-icon">Insert a new row</label>
+                    <input type="image" src="../query_icons/new_icon.png" name="new" class="button" width="10% !important" id="new-row-icon">
+                </form>
+            </div>
+            <?php
+            var_dump($_POST);
+            if (canInsert()) {
+                insertNewRow($_SESSION["connection"], $_POST["newType"], $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+            }
+            if (canUpdate()) {
+                foreach ($_POST as $postItem => $e) {
+                    if (strpos($postItem, "updateRow") !== false) {
+                        $itemId = str_replace("updateRow", "", $postItem);
+                        $itemId = str_replace("_x", "", $itemId);
+                        var_dump($itemId);
+                        updateRow($_SESSION["connection"], $itemId, $_POST["updateType"], $_POST["updateName"], $_POST["updateQuantity"], $_POST["updateUnit"], $_POST["updateSupplyDate"], $_POST["updateNoticeDate"]);
+                        break;
+                    }
+                }
+            }
+            ?>
         </div>
-    </div>
+        </div>
 </body>
+
 </html>

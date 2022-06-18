@@ -40,74 +40,40 @@
         </div>
         <div class="right">
             <h3>Make Up</h3>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Suply Date</th>
-                    <th>Notice Date</th>
-                </tr>
-                <tr>
-                    <td>Rimel</td>
-                    <td>80buc</td>
-                    <td>11.01.2022</td>
-                    <td>11.02.2022</td>
-                </tr>
-                <tr>
-                    <td>Ruj</td>
-                    <td>140buc</td>
-                    <td>11.01.2022</td>
-                    <td>11.02.2022</td>
-                </tr>
-                <tr>
-                    <td>Fond de ten</td>
-                    <td>115buc</td>
-                    <td>11.01.2022</td>
-                    <td>11.02.2022</td>
-                </tr>
-                <td>Paleta de machiaj</td>
-                <td>50buc</td>
-                <td>11.01.2022</td>
-                <td>11.02.2022</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-                <tr>
-                    <td>- </td>
-                    <td>- </td>
-                    <td>- </td>
-                    <td> -</td>
-                </tr>
-            </table>
+            <form method="post">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Supply Date</th>
+                        <th>Notice Date</th>
+                        <th>Options</th>
+                    </tr>
+                    <?php
+                    require_once "../includes/functions.php";
+                    createTable("MakeUp");
+                    ?>
+                </table>
+            </form>
+            <div class="after-table">
+                <form method="post">
+                    <label for="new-row-icon">Insert a new row</label>
+                    <input type="image" src="../query_icons/new_icon.png" name="new" class="button" width="10% !important" id="new-row-icon">
+                </form>
+            </div>
+            <?php
+            // var_dump($_POST);
+            $values = ["newName", "newQuantity", "newUnit", "newSupply", "newNotice"];
+            foreach ($values as $value) {
+                if (!isset($_POST[$value])) {
+                    return;
+                }
+            }
+            insertNewRow($_SESSION["connection"], "MakeUp", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+            ?>
         </div>
     </main>
 </body>
+
 </html>
