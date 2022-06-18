@@ -22,12 +22,12 @@
             <label for="mail">Email</label>
 
                 <input type="email" name="mail" id="mail" required
-                placeholder="example@gmail.com" method="get">
+                placeholder="example@gmail.com">
 
             <label for="password">Password</label>
 
                 <input type="password" name="password" id="password" required
-                placeholder="********" method="get">
+                placeholder="********">
 
                 <button  class="button" type="submit" name="submit">Log In</button>
                 <?php
@@ -35,19 +35,9 @@
                 if($_GET["error"] == "wronglogin"){
                 echo "<p>Incorrect login information!</p>";
                  }   
-                 else  
-                if($_GET["error"] == "updatefailed"){
+                 else  if($_GET["error"] == "updatefailed"){
                     echo "<p>Something went wrong!</p>";
-                    
-                }
-            } else{
-            if(isset($_GET["mail"])&&isset($_GET["password"])){
-
-            
-               $email=$_GET["mail"];
-               $psswd=$_GET["password"];
-                $statement="insert into users(mail,psswd,created,logged ) values()" ;}
-                
+                     }
             }         
             ?>
             </form>
