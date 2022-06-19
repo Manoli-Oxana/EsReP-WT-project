@@ -8,7 +8,7 @@ require_once 'dbh.php';
 $query = "SELECT name, quantity, unit, type, supply, notice FROM all_stuff WHERE id='$id';";
 $result = mysqli_query($conn, $query);
 
-
+$succes = 0;
 if(isset($_POST["exportCsv"])){
    
     if(mysqli_num_rows($result)>0){
@@ -37,6 +37,10 @@ if(isset($_POST["exportCsv"])){
 
     //output all remaining data on a file pointer
     fpassthru($f);
+
+    if(!empty($result)){
+        $succes = 1;
+   }
 }
 else if(isset($_POST["exportJson"])){
    
@@ -54,11 +58,14 @@ else if(isset($_POST["exportJson"])){
 
     //set headers to download file
     header('Content-Type:application/json; chartset=utf-8');
-    header('Content-Transfer-Encoding: Binary');
     header('Content-Disposition: attachment; filename="' . $filename . '";');
 
     //output all remaining data on a file pointer
     fpassthru($f);
+
+    if(!empty($result)){
+        $succes = 1;
+   }
 }
 else if(isset($_POST["exportXml"])){
     $filename = "supplies-data_" . date('Y-m-d') . ".xml";
@@ -104,5 +111,14 @@ else if(isset($_POST["exportXml"])){
     header('Content-Disposition: attachment; filename="' . $filename . '";');
     $xml->flush();
 
+    if(!empty($result)){
+        $succes = 1;
+   }
+
+   if($succes == 1){
+    header("location:  ../features/import.php?error=none");
+}
+else
+    header("location:  ../features/import.php?error=problemexporting");
 
 }
