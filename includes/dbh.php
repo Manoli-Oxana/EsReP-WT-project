@@ -1,14 +1,16 @@
 <?php
 
-$serverName = "eu-cdbr-west-02.cleardb.net";
-$dBUsername = "bffe8797c22a8e";
-$dBPassword = "1421205b";
-$dBName = "heroku_77cead369fea437";
-
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db = substr($cleardb_url["path"],1);
+$active_group = 'default';
+$query_builder = TRUE;
 
 if (!session_id())
     session_start();
-$conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 $_SESSION["connection"] = $conn;
 if(!$conn){
     die("Connection failed: " . mysqli_connect_error());
