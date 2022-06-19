@@ -66,21 +66,17 @@
                 </form>
             </div>
             <?php
-            var_dump($_POST);
-            if (canInsert()) {
-                insertNewRow($_SESSION["connection"], $_POST["newType"], $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
-            }
-            if (canUpdate()) {
-                foreach ($_POST as $postItem => $e) {
-                    if (strpos($postItem, "updateRow") !== false) {
-                        $itemId = str_replace("updateRow", "", $postItem);
-                        $itemId = str_replace("_x", "", $itemId);
-                        var_dump($itemId);
-                        updateRow($_SESSION["connection"], $itemId, $_POST["updateType"], $_POST["updateName"], $_POST["updateQuantity"], $_POST["updateUnit"], $_POST["updateSupplyDate"], $_POST["updateNoticeDate"]);
-                        break;
+                $values = ["newType", "newName", "newQuantity", "newUnit", "newSupply", "newNotice"];
+                foreach ($values as $value) {
+                 if (!isset($_POST[$value])) {
+                    return;
                     }
                 }
-            }
+            insertNewRow($_SESSION["connection"], $_POST["newType"], $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+
+
+
+            
             ?>
         </div>
         </div>

@@ -52,7 +52,7 @@
 					</tr>
 					<?php
 					require_once "../includes/functions.php";
-					createTable("Check Up");
+					createTable("check-up");
 					?>
 				</table>
 			</form>
@@ -70,7 +70,7 @@
 					return;
 				}
 			}
-			insertNewRow($_SESSION["connection"], "Check Up", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+			insertNewRow($_SESSION["connection"], "check-up", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
 			?>
 		</div>
 	</main>

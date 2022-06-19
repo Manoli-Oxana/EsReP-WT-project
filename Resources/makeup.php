@@ -26,8 +26,8 @@
             <ul>
                 <li><a href="food.php">Food</a></li>
                 <li><a href="medicine.php">Medicine</a></li>
-                <li><a href="fuel.php">Fuel</a></li>
-                <li><a id="focus" href="makeup.php">Make Up</a></li>
+                <li><a id="focus" href="fuel.php">Fuel</a></li>
+                <li><a href="makeup.php">Make Up</a></li>
                 <li><a href="office.php">Office Suplies</a></li>
                 <li><a href="tools.php">Tools</a></li>
             </ul>
@@ -39,7 +39,7 @@
             </ul>
         </div>
         <div class="right">
-            <h3>Make Up</h3>
+            <h3>Fuel</h3>
             <form method="post">
                 <table>
                     <tr>
@@ -52,7 +52,7 @@
                     </tr>
                     <?php
                     require_once "../includes/functions.php";
-                    createTable("MakeUp");
+                    createTable("make-up");
                     ?>
                 </table>
             </form>
@@ -70,7 +70,7 @@
                     return;
                 }
             }
-            insertNewRow($_SESSION["connection"], "MakeUp", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+            insertNewRow($_SESSION["connection"], "make-up", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
             ?>
         </div>
     </main>

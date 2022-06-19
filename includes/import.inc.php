@@ -33,7 +33,6 @@ if(isset($_POST["import"])){
         $array = json_decode($data);
 
         foreach($array as $value){
-            var_dump($value);
             $queryJson = "INSERT INTO all_stuff (id, name, quantity, unit, type, supply, notice) 
             VALUES ('$id', '" . $value->name . "', '" . $value->quantity . "', '" . $value->unit . "', '" . $value->type . "', '" . $value->supply . "', '"  . $value->notice . "');";
 

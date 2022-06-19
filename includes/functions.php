@@ -1,21 +1,21 @@
 <?php
+ 
 
-function pwdMatch($mypassword, $mypassword2)
-{
-    $result = false;
+ function pwdMatch($mypassword, $mypassword2){
+    $result;
     if ($mypassword !== $mypassword2) {
         $result = true;
-    } else {
+    }
+    else {
         $result = false;
     }
     return $result;
 }
 
-function emailExists($conn, $myemail)
-{
+function emailExists($conn, $myemail){
     $sql = "SELECT * FROM users WHERE mail = ?;";
     $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    if (!mysqli_stmt_prepare($stmt, $sql)){
         header("location:  ../Accounts/register.php?error=emailtaken");
         exit;
     }
@@ -25,9 +25,10 @@ function emailExists($conn, $myemail)
 
     $resultData = mysqli_stmt_get_result($stmt);
 
-    if ($row = mysqli_fetch_assoc($resultData)) {
+    if($row = mysqli_fetch_assoc($resultData)){
         return $row;
-    } else {
+    }
+    else {
         $result = false;
         return $result;
     }
@@ -35,11 +36,10 @@ function emailExists($conn, $myemail)
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $myemail, $mypassword)
-{
+function createUser($conn, $myemail, $mypassword){
     $sql = "INSERT INTO users (mail, psswd, created ) VALUES (?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    if (!mysqli_stmt_prepare($stmt, $sql)){
         header("location:  ../Accounts/register.php?error=registerfailed");
         exit();
     }
@@ -55,11 +55,10 @@ function createUser($conn, $myemail, $mypassword)
 }
 
 
-function loginUser($conn, $myemail, $mypassword)
-{
+function loginUser($conn, $myemail, $mypassword){
     $emailExists = emailExists($conn, $myemail);
 
-    if ($emailExists === false) {
+    if($emailExists === false){
         header("location:  ../Accounts/login.php?error=wronglogin");
         exit();
     }
@@ -68,34 +67,37 @@ function loginUser($conn, $myemail, $mypassword)
 
     $checkPwd = password_verify($mypassword, $pwdHashed);
 
-    if ($checkPwd === false) {
+    if($checkPwd === false){
         header("location:  ../Accounts/login.php?error=wronglogin");
         exit();
-    } else if ($checkPwd === true) {
+    }
+    else if ($checkPwd === true){
         $sql = "UPDATE users SET logged = (?) WHERE mail = '$myemail';";
         $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
+        if (!mysqli_stmt_prepare($stmt, $sql)){
             header("location:  ../Accounts/register.php?error=updatefailed");
             exit();
         }
-
+    
         $logged = date("Y/m/d");
-
+    
         mysqli_stmt_bind_param($stmt, "s", $logged);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        if (!session_id())
-            session_start();
-        $_SESSION["id"] = $emailExists["ID"];
-        header("location: ../index.php");
-        exit();
+    
+       session_start();
+       $_SESSION["id"] = $emailExists["ID"];
+       header("location: ../index.php");
+       exit();
+       
+
     }
 }
 
-
 function changePwd($conn, $oldPwd, $password1, $password2){
-    session_start();
+   
+    require_once 'dbh.php';
     $id = $_SESSION["id"];
 
     $sql = "SELECT psswd FROM users WHERE id= '$id';";
@@ -128,20 +130,24 @@ function changePwd($conn, $oldPwd, $password1, $password2){
     exit();
     }
 }
-function getuserbyid($connection, $id)
+
+function getuserbyid($conn, $id)
 {
-    $sql = "SELECT * FROM users WHERE id =" . $id;
-    $result = $connection->query($sql);
+    $sql = "SELECT * FROM users WHERE id ='$id'";
+    $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         return $row;
     }
     return null;
 }
-function getresources($connection)
+function getresources($conn)
 {
-    $sql = "SELECT * FROM allresources WHERE type='Food' or type='Fuel' or type='medicine' or type='makeup' or type='office supplies' or type='tools'";
+    require_once 'dbh.php';
+    $id = $_SESSION["id"];
+
+    $sql = "SELECT * FROM all_stuff WHERE (type='food' or type='fuel' or type='medicine' or type='make-up' or type='office_supplies' or type='tools') and id ='$id'";
     $output = [];
-    $result = $connection->query($sql);
+    $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         array_push($output, $row);
     }
@@ -149,33 +155,40 @@ function getresources($connection)
 }
 
 
-function getmaintanance($connection)
+function getmaintanance($conn)
 {
-    $sql = "SELECT * FROM allresources WHERE type='Spare Parts' or type='Insurance' or type='Check Up' ";
+    require_once 'dbh.php';
+    $id = $_SESSION["id"];
+
+    $sql = "SELECT * FROM all_stuff WHERE type='spare-parts' or type='insurance' or type='check-up' and id='$id' ";
     $output = [];
-    $result = $connection->query($sql);
+    $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         array_push($output, $row);
     }
     return $output;
 }
 
-function getresourcesbytype($connection, $type)
+function getresourcesbytype($conn, $type)
 {
-    $sql = "SELECT * FROM allresources WHERE type='" . $type . "'";
+    require_once 'dbh.php';
+    $id = $_SESSION["id"];
+    
+    $sql = "SELECT * FROM all_stuff WHERE type='$type' and id='$id' ";
     $output = [];
-    $result = $connection->query($sql);
+    $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         array_push($output, $row);
     }
-    return $output;
-}
-
-function deleteResourceById($connection, $id)
-{
-    $sql = "DELETE FROM allresources WHERE id=" . $id;
     var_dump($sql);
-    $connection->query($sql);
+    return $output;
+    
+}
+
+function deleteResourceById($conn, $id)
+{
+    $sql = "DELETE FROM all_stuff  WHERE id='$id'" ;
+    $conn->query($sql);
 }
 function canInsert()
 {
@@ -198,31 +211,32 @@ function canUpdate()
     }
     return true;
 }
-function insertNewRow($connection, $type, $name, $quantity, $unit, $supply, $notice)
-{
-    $sql = $connection->prepare("INSERT INTO allresources (type, name, quantity, supply, notice, unit) VALUES (?, ?, ?, ?, ?, ?)");
-    $sql->bind_param("ssssss", $type, $name, $quantity, $supply, $notice, $unit);
+function insertNewRow($conn, $type, $name, $quantity, $unit, $supply, $notice)
+{   require_once "dbh.php";
+    $id=$_SESSION["id"];
+
+    $sql = $conn->prepare("INSERT INTO all_stuff (id, type, name, quantity, supply, notice, unit) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $sql->bind_param("sssssss", $id, $type, $name, $quantity, $supply, $notice, $unit);
     $sql->execute();
 }
 
 
-function updateRow($connection, $id, $type, $name, $quantity, $unit, $supply, $notice)
+function updateRow($conn, $itemId, $type, $name, $quantity, $unit, $supply, $notice)
 {
-    $sql = $connection->prepare("UPDATE allresources SET type=?, name=?, quantity=?, supply=?, notice=?, unit=? WHERE id=?");
-    $sql->bind_param("sssssss", $type, $name, $quantity, $supply, $notice, $unit, $id);
+    $sql = $conn->prepare("UPDATE all_stuff SET type=?, name=?, quantity=?, supply=?, notice=?, unit=? WHERE id=?");
+    $sql->bind_param("sssssss", $type, $name, $quantity, $supply, $notice, $unit, $itemId);
     $sql->execute();
 }
 
-function getRowIndexById($connection, $id, $isResource)
+function getRowIndexById($conn, $id, $isResource)
 {
-    $connection->query("SET @row_num=0");
+    $conn->query("SET @row_num=0");
     if ($isResource) {
-        $sql = "SELECT * FROM (SELECT (@row_num:=@row_num + 1) AS num, id FROM allresources WHERE type !='Spare parts' and type!='Insurance' and type!='Check Up' and type!='Maintenance' ORDER BY id) AS inner_table WHERE inner_table.id=" . $id;
+        $sql = "SELECT * FROM (SELECT (@row_num:=@row_num + 1) AS num, id FROM all_stuff WHERE type !='spare-parts' and type!='insurance' and type!='check-up' and type!='maintenance' ORDER BY id) AS inner_table WHERE inner_table.id='$id'" ;
     } else {
-        $sql = "SELECT * FROM (SELECT (@row_num:=@row_num + 1) AS num, id FROM allresources WHERE type ='Spare parts' or type='Insurance' or type='Check up' or type='Maintenance' ORDER BY id) AS inner_table WHERE inner_table.id=" . $id;
+        $sql = "SELECT * FROM (SELECT (@row_num:=@row_num + 1) AS num, id FROM all_stuff WHERE type ='spare-parts' or type='insurance' or type='check-up' or type='maintenance' ORDER BY id) AS inner_table WHERE inner_table.id='$id'" ;
     }
-    $result = $connection->query($sql);
-    var_dump($result);
+    $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         return $row;
     }
@@ -231,11 +245,9 @@ function getRowIndexById($connection, $id, $isResource)
 
 function createTable($resourceType = false, $isMaintenance = false)
 {
-    require_once "../includes/dbh.php";
-    if (!session_id())
-        session_start();
-
-    $userdata = getuserbyid($_SESSION["connection"], 2);
+    require_once "dbh.php";
+    
+    $userdata = getuserbyid($_SESSION["connection"], $_SESSION["id"]);
     if (!$resourceType) {
         if (!$isMaintenance) {
             $resources = getresources($_SESSION["connection"]);
@@ -249,6 +261,7 @@ function createTable($resourceType = false, $isMaintenance = false)
             $resources = getresourcesbytype($_SESSION["connection"], $resourceType);
         }
     }
+    
     foreach ($resources as $resource) {
         echo "<tr>";
         if (!$resourceType) {
@@ -262,8 +275,8 @@ function createTable($resourceType = false, $isMaintenance = false)
         echo "<td>";
 
         echo '<form method="post">';
-        echo '<input type="image" src="../query_icons/delete_icon.png" name="delete' . $resource["ID"] . '" class="button" width="10% !important" />';
-        echo '<input type="image" src="../query_icons/edit_icon.png" name="edit' . $resource["ID"] . '" class="button" width="10% !important" />';
+        echo '<input type="image" src="../query_icons/delete_icon.png" name="delete' . $resource["id"] . '" class="button" width="5% !important" />';
+        echo '<input type="image" src="../query_icons/edit_icon.png" name="edit' . $resource["id"] . '" class="button" width="5% !important" />';
 
         echo "</form>";
 
@@ -280,7 +293,7 @@ function createTable($resourceType = false, $isMaintenance = false)
             $itemId = str_replace("edit", "", $postItem);
             $itemId = str_replace("_x", "", $itemId);
             $rowIndex = getRowIndexById($_SESSION["connection"],  $itemId, true);
-            var_dump($rowIndex);
+
             echo '<script>alterRowById(' . $itemId . ', ' . $rowIndex["num"] . ')</script>';
             break;
         } else if (strpos($postItem, "new") !== false) {

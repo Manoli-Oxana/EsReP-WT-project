@@ -36,7 +36,6 @@
 				<li><a id="focus" href="spare.php">Spare Parts</a></li>
 				<li><a href="insurance.php">Insurance</a></li>
 				<li><a href="check.php">Check Up</a></li>
-				<li><a href="appliances.php">Appliances</a></li>
 			</ul>
 		</div>
 		<div class="right">
@@ -53,7 +52,7 @@
 					</tr>
 					<?php
 					require_once "../includes/functions.php";
-					createTable("Spare Parts");
+					createTable("spare-parts");
 					?>
 				</table>
 			</form>
@@ -71,7 +70,7 @@
 					return;
 				}
 			}
-			insertNewRow($_SESSION["connection"], "Spare Parts", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+			insertNewRow($_SESSION["connection"], "spare-parts", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
 			?>
 		</div>
 	</main>

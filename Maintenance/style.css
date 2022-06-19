@@ -115,11 +115,10 @@ main {
     padding: 0.5rem;
 }
 
-.right table,
-tr {
+.right table {
     border: 2px solid;
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
 }
 
 .right th,
@@ -127,62 +126,6 @@ td {
     border: 2px solid;
     padding: 0.25rem;
     text-align: center;
-}
-
-#cabinet {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-weight: 300;
-}
-
-#cabinet p {
-    font-size: large;
-    font-weight: bold;
-}
-
-span {
-    color: var(--bejdarinchis);
-}
-
-#form {
-    margin-top: 2.5rem;
-    display: flex;
-    justify-content: space-around;
-    font-size: larger;
-}
-
-label {
-    display: inline-block;
-    width: 96.6%;
-    font-weight: bold;
-    color: var(--bejdarinchis);
-}
-
-input[type="email"],
-input[type="password"] {
-    width: 96.6%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-}
-
-.button {
-    background-color: var(--minialbastru);
-    color: var(--bejdarinchis);
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-    font-size: large;
-}
-
-.button:hover {
-    opacity: 1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .small-image {
