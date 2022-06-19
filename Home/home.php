@@ -49,5 +49,12 @@
             </p>
         </div>
     </main>
+    <?php 
+        ini_set('display_errors','Off');
+        $id = $_SESSION["id"];
+        require '../includes/functions.php';
+
+        notice($id);
+        ?>
 </body>
 </html>
