@@ -1,124 +1,56 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>EsReP</title>
+</head>
+<body>
+    <header>
+        <a href="../Home/home.php"><img src="../EsReP.png"></a>
+        <nav>
+            <a href="../Home/home.php">Home</a>
+            <a href="import.php">Import</a>
+            <a href="export.php">Export</a>
+            <a href="../Home/cabinet.php">My Cabinet</a>
+        </nav>
+    </header>
 
-session_start();
-$id = $_SESSION["id"];
-
-require_once 'dbh.php';
-
-$query = "SELECT name, quantity, unit, type, supply, notice FROM all_stuff WHERE id='$id';";
-$result = mysqli_query($conn, $query);
-
-$succes = 0;
-if(isset($_POST["exportCsv"])){
-   
-    if(mysqli_num_rows($result)>0){
-        $delimiter = ",";
-        $filename = "supplies-data_" . date('Y-m-d') . ".csv";
-
-        //create a file pointer
-        $f = fopen('php://memory', 'w');
-
-        $fields = array('Name', 'Quantity', 'Unit', 'Type', 'Supply', 'Notice');
-        fputcsv($f, $fields, $delimiter);
-
-        while($row = mysqli_fetch_assoc($result)){
-            $lineData = array($row['name'], $row['quantity'], $row['unit'], $row['type'], $row['supply'], $row['notice'] );
-            fputcsv($f, $lineData, $delimiter);
-        }
-    }
-
-    //move back to beginning of file
-    fseek($f, 0);
-
-    //set headers to download file
-    header('Content-Type: text/csv; chartset=utf-8');
-    header('Content-Transfer-Encoding: Binary');
-    header('Content-Disposition: attachment; filename="' . $filename . '";');
-
-    //output all remaining data on a file pointer
-    fpassthru($f);
-
-    if(!empty($result)){
-        $succes = 1;
-   }
-}
-else if(isset($_POST["exportJson"])){
-   
-    $filename = "supplies-data_" . date('Y-m-d') . ".json";
-    $f = fopen('php://memory', 'w');
-
-    $json_array = array();
-
-    while($row = mysqli_fetch_assoc($result)){
-        $json_array[] = $row;
-
-    }
-    fwrite($f, json_encode($json_array));
-    fseek($f, 0);
-
-    //set headers to download file
-    header('Content-Type:application/json; chartset=utf-8');
-    header('Content-Disposition: attachment; filename="' . $filename . '";');
-
-    //output all remaining data on a file pointer
-    fpassthru($f);
-
-    if(!empty($result)){
-        $succes = 1;
-   }
-}
-else if(isset($_POST["exportXml"])){
-    $filename = "supplies-data_" . date('Y-m-d') . ".xml";
-    $f = fopen('php://memory', 'w');
-
-    $xml = new XMLWriter();
-    $xml->openUri("php://output");
-    $xml->startDocument('1.0', 'UTF-8');
-    $xml->setIndent(true);
-    $xml->startElement('supplies');
-
-    while($row = mysqli_fetch_assoc($result)){
-        $xml->startElement('stock');
-            $xml->startElement('name');
-            $xml->writeRaw($row['name']);
-            $xml->endElement();
-
-            $xml->startElement('quantity');
-            $xml->writeRaw($row['quantity']);
-            $xml->endElement();
-
-            $xml->startElement('unit');
-            $xml->writeRaw($row['unit']);
-            $xml->endElement();
-
-            $xml->startElement('type');
-            $xml->writeRaw($row['type']);
-            $xml->endElement();
-
-            $xml->startElement('supply');
-            $xml->writeRaw($row['supply']);
-            $xml->endElement();
-
-            $xml->startElement('notice');
-            $xml->writeRaw($row['notice']);
-            $xml->endElement();
-        $xml->endElement();    
-    }
-    $xml->endElement();
-
-   
-    header('Content-type: text/xml');
-    header('Content-Disposition: attachment; filename="' . $filename . '";');
-    $xml->flush();
-
-    if(!empty($result)){
-        $succes = 1;
-   }
-
-   if($succes == 1){
-    header("location:  ../features/import.php?error=none");
-}
-else
-    header("location:  ../features/import.php?error=problemexporting");
-
-}
+    <main>
+        <div class="leftmenu">
+            <a href="../Resources/resources.php">Resources</a>
+            <ul>
+                <li><a href="../Resources/food.php">Food</a></li>
+                <li><a href="../Resources/medicine.php">Medicine</a></li>
+                <li><a href="../Resources/fuel.php">Fuel</a></li>
+                <li><a href="../Resources/makeup.php">Make Up</a></li>
+                <li><a href="../Resources/officesupplies.php">Office Suplies</a></li>
+                <li><a href="../Resources/tools.php">Tools</a></li>
+            </ul>
+            <a href="../Maintenance/maintenance.php">Maintenance</a>
+            <ul>
+                <li><a href="../Maintenance/spare.php">Spare Parts</a></li>
+                <li><a href="../Maintenance/insurance.php">Insurance</a></li>
+                <li><a href="../Maintenance/check.php">Check Up</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <form method="post" action="../includes/export.inc.php" name="export" >
+            <button  class="button" type="submit" name="exportCsv">CSV Export</button>
+            <button  class="button" type="submit" name="exportJson">JSON Export</button>
+            <button  class="button" type="submit" name="exportXml">XML Export</button>
+            <?php
+            if(isset($_GET["error"])){
+            if($_GET["error"] == "problemexporting"){
+                echo "<p>Problem exporting your data!</p> ";
+                    }    
+                }         
+            ?>
+        </form>
+            <button>Download Statistics</button>
+        </div>
+    <main>
+</body>
+</html>
