@@ -339,12 +339,5 @@ function notice($id){
         
         window.onload = function(){ alert(message);} 
         </script>';
-
-        $fetch = mysqli_query($conn, "SELECT mail FROM users WHERE id = '$id'");
-        $rowData = mysqli_fetch_array($fetch, MYSQLI_ASSOC);
-        $email .= $rowData["mail"];
-
-        $result = @mail($email, "ESREP Notice", "It's time to check on $list");
-        exit();
     }
 }
