@@ -1,8 +1,8 @@
 <?php
 
 $serverName = "localhost";
-$dBUsername = "mysqluser";
-$dBPassword = "mysqluser";
+$dBUsername = "root";
+$dBPassword = "";
 $dBName = "esrep";
 
 if (!session_id())
