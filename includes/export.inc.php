@@ -3,7 +3,7 @@
 require_once 'dbh.php';
 $id = $_SESSION["id"];
 
-$query = "SELECT name, quantity, unit, type, supply, notice FROM all_stuff WHERE id='$id';";
+$query = "SELECT name, quantity, unit, type, supply, notice FROM all_stuff WHERE user_id='$id';";
 $result = mysqli_query($conn, $query);
 
 

@@ -1,3 +1,9 @@
+<?php
+    require_once '../includes/functions.php';
+    if(!session_id()){
+        session_start();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>EsReP</title>
 </head>
 
@@ -13,10 +20,14 @@
     <header>
         <a href="../Home/home.php"><img src="../EsReP.png"></a>
         <nav>
-            <a href="../Home/home.php">Home</a>
-            <a href="../features/import.php">Import</a>
-            <a href="../features/export.php">Export</a>
-            <a href="../Home/cabinet.php">My Cabinet</a>
+        <?php
+        if(isset($_SESSION["id"])){
+            showNav();
+        }
+        else{
+            header('location: ../index.php');
+            }
+             ?>
         </nav>
     </header>
 
@@ -39,7 +50,7 @@
             </ul>
         </div>
         <div class="right">
-            <h3>Fuel</h3>
+            <h3>Make Up</h3>
             <form method="post">
                 <table>
                     <tr>
@@ -63,14 +74,20 @@
                 </form>
             </div>
             <?php
-            // var_dump($_POST);
-            $values = ["newName", "newQuantity", "newUnit", "newSupply", "newNotice"];
-            foreach ($values as $value) {
-                if (!isset($_POST[$value])) {
-                    return;
+            if(canInsert())
+            insertNewRow($_SESSION["connection"], 'make-up', $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
+
+            if (canUpdate()) {
+                foreach ($_POST as $postItem => $e) {
+                    if (strpos($postItem, "updateRow") !== false) {
+                        $itemId = str_replace("updateRow", "", $postItem);
+                        $itemId = str_replace("_x", "", $itemId);
+                        
+                        updateRow($_SESSION["connection"], $itemId, 'make-up', $_POST["updateName"], $_POST["updateQuantity"], $_POST["updateUnit"], $_POST["updateSupplyDate"], $_POST["updateNoticeDate"]);
+                        break;
+                    }
                 }
             }
-            insertNewRow($_SESSION["connection"], "make-up", $_POST["newName"], $_POST["newQuantity"], $_POST["newUnit"], $_POST["newSupply"], $_POST["newNotice"]);
             ?>
         </div>
     </main>
