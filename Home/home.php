@@ -11,6 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
     <title>EsReP</title>
 </head>
 <body>
@@ -48,13 +50,55 @@
             </ul>
         </div>
         <div class="right">
-            <h3>Statistics</h3>
-            <img src="diagram.jpg">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta dolor faucibus, ultricies nibh vitae, vestibulum odio. Ut dictum at enim nec efficitur. In sit amet pretium nibh. Vestibulum vehicula a mauris in sagittis. Nullam vel lorem sapien. Ut ut malesuada ipsum. In vel enim a risus volutpat consectetur. Donec vitae turpis aliquet, sollicitudin erat id, iaculis erat. In hac habitasse platea dictumst. Donec dapibus metus ut arcu sollicitudin ultrices. Nunc nec auctor nunc, et lobortis mauris. Pellentesque non lorem iaculis, placerat nunc id, tincidunt lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vulputate urna nec pretium laoreet. Etiam ac purus non mauris ultricies pellentesque. Curabitur interdum sit amet dolor in interdum.
+            <h3>Statistics</h3> 
+            <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+
+<?php
+  require_once '../includes/functions.php';
+  $month1= getNrOfSuppliesByMonth(1);
+  $month2= getNrOfSuppliesByMonth(2);
+  $month3= getNrOfSuppliesByMonth(3);
+  $month4= getNrOfSuppliesByMonth(4);
+  $month5= getNrOfSuppliesByMonth(5);
+  $month6= getNrOfSuppliesByMonth(6);
+  $month7= getNrOfSuppliesByMonth(7);
+  $month8= getNrOfSuppliesByMonth(8);
+  $month9= getNrOfSuppliesByMonth(9);
+  $month10= getNrOfSuppliesByMonth(10);
+  $month11= getNrOfSuppliesByMonth(11);
+  $month12= getNrOfSuppliesByMonth(12);
+
+  
+?>
+<script>
     
-                Sed aliquam neque ultricies ante eleifend pretium vitae non leo. Donec non dictum turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum ut diam at dapibus. Mauris quam metus, tempus ac mi sit amet, rhoncus bibendum nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id sem metus. Phasellus feugiat massa a lacus egestas sollicitudin. Donec aliquam vehicula tincidunt. Sed vel ante volutpat, dictum nulla in, maximus augue. Etiam vestibulum purus justo, vitae finibus nulla convallis rhoncus. Vestibulum tortor nulla, tincidunt et accumsan id, lobortis ut enim.
-            </p>
+   
+var xValues = ["January", "February", "March", "April ", "May ", "June", "July ", "August", "September ","October", "November ", "December"];
+var x = "<?php echo"$month1"?>";
+var_dump(x);
+var yValues = [$month1, $month2,$month3, $month4, $month5, $month6, $month7, $month8, $month9, $month10, $month11, $month12];
+
+var barColors = ["red", "green","blue","orange","brown","blue","orange","brown","blue","orange","brown","blue" ];
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Products that "
+    }
+  }
+});
+
+</script>
+            
         </div>
     </main>
     <?php 

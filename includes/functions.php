@@ -217,7 +217,7 @@ function canUpdate()
     return true;
 }
 function insertNewRow($conn, $type, $name, $quantity, $unit, $supply, $notice)
-{   require_once "dbh.php";
+{   require_once 'dbh.php';
     $id=$_SESSION["id"];
 
     $query = "SELECT max(product_id) from all_stuff where user_id='$id';";
@@ -345,7 +345,7 @@ function notice($id){
     $query_notice_check = "SELECT name FROM all_stuff WHERE user_id='$id' AND notice <= CURRENT_DATE;";
     $result = mysqli_query($conn, $query_notice_check);
     $count = mysqli_num_rows($result);
-    $list = ""; $email="";
+    $list = "";
 
     if($count == 0){
         exit();
@@ -354,6 +354,7 @@ function notice($id){
         while($rowData = mysqli_fetch_assoc($result)){
             $list .= $rowData["name"].', ';
         };
+        $message = "You should check on ".$list;
 
         $name = "list";
         setcookie($name, $list);
@@ -362,10 +363,34 @@ function notice($id){
         let x = document.cookie;
         x = encodeURIComponent(x);
         c = x.replace("list", "").replace(/%3D/g, "").replace(/%252C/g, ",").replace(/%2520/g, " ").replace("%3B%20PHPSESSID47639he2tog0lemc86uemg8lq5", "");
+        c = c.slice(0, c.indexOf("%")-2).concat(".");
         x = "Check on "
         message = x.concat(c);
         
         window.onload = function(){ alert(message);} 
         </script>';
+
+        $fetch_mail = mysqli_query($conn, "SELECT mail FROM users WHERE id ='$id'");
+        $rowData = mysqli_fetch_assoc($fetch_mail);
+        $email = "".$rowData["mail"];
+
+        //mail($email, "ESREP Notice!", $message);
+
     }
+}
+
+function getNrOfSuppliesByMonth($month){
+    require_once 'dbh.php';
+   $conn= $_SESSION["connection"];
+   $id = $_SESSION["id"];
+
+    $query = "SELECT count(*) from all_stuff where user_id='$id' and MONTH(notice) = '$month'";
+    $queryMonth = mysqli_query($conn, $query) ;
+    $rowData = mysqli_fetch_array($queryMonth);
+    $value= intVal($rowData["count(*)"]);
+      
+    if($rowData == NULL)
+        return 0;
+
+    return $value;
 }
