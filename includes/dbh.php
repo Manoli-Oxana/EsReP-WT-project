@@ -1,9 +1,9 @@
 <?php
 
-$serverName = "localhost";
-$dBUsername = "root";
-$dBPassword = "";
-$dBName = "esrep";
+$serverName = "eu-cdbr-west-02.cleardb.net";
+$dBUsername = "bffe8797c22a8e";
+$dBPassword = "1421205b";
+$dBName = "heroku_77cead369fea437";
 
 
 if (!session_id())
