@@ -310,3 +310,41 @@ function createTable($resourceType = false, $isMaintenance = false)
         }
     }
 }
+function notice($id){
+    session_name("");
+    require_once 'dbh.php';
+
+    $query_notice_check = "SELECT name FROM all_stuff WHERE id='$id' AND notice <= CURRENT_DATE;";
+    $result = mysqli_query($conn, $query_notice_check);
+    $count = mysqli_num_rows($result);
+    $list = ""; $email="";
+
+    if($count == 0){
+        exit();
+    }
+    else {
+        while($rowData = mysqli_fetch_assoc($result)){
+            $list .= $rowData["name"].', ';
+        };
+
+        $name = "list";
+        setcookie($name, $list);
+
+        echo '<script type="text/JavaScript"> 
+        let x = document.cookie;
+        x = encodeURIComponent(x);
+        c = x.replace("list", "").replace(/%3D/g, "").replace(/%252C/g, ",").replace(/%2520/g, " ").replace("%3B%20PHPSESSID47639he2tog0lemc86uemg8lq5", "");
+        x = "Check on "
+        message = x.concat(c);
+        
+        window.onload = function(){ alert(message);} 
+        </script>';
+
+        $fetch = mysqli_query($conn, "SELECT mail FROM users WHERE id = '$id'");
+        $rowData = mysqli_fetch_array($fetch, MYSQLI_ASSOC);
+        $email .= $rowData["mail"];
+
+        $result = @mail($email, "ESREP Notice", "It's time to check on $list");
+        exit();
+    }
+}
