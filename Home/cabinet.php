@@ -1,3 +1,9 @@
+<?php
+    require_once '../includes/functions.php';
+    if(!session_id()){
+        session_start();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +17,14 @@
     <header>
         <a href="home.php"><img src="../EsReP.png"></a>
         <nav>
-            <a href="home.php">Home</a>
-            <a href="../features/import.php">Import</a>
-            <a href="../features/export.php">Export</a>
-            <a href="cabinet.php">My Cabinet</a>
+        <?php
+        if(isset($_SESSION["id"])){
+            showNav();
+        }
+        else{
+            header('location: ../index.php');
+            }
+             ?>
         </nav>
     </header>
 
