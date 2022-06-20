@@ -106,7 +106,7 @@ function changePwd($conn, $oldPwd, $password1, $password2){
     require_once 'dbh.php';
     $id = $_SESSION["id"];
 
-    $sql = "SELECT psswd FROM users WHERE id= '$id';";
+    $sql = "SELECT psswd FROM users WHERE user_id= '$id';";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) === 1)
         $row = mysqli_fetch_assoc($result);
@@ -120,7 +120,7 @@ function changePwd($conn, $oldPwd, $password1, $password2){
         header("location:  ../Home/cabinet.php?error=passdontmatch");
         exit();
     } else if ($checkPwd === true){
-        $sql = "UPDATE users SET psswd = (?) WHERE id= '$id';";
+        $sql = "UPDATE users SET psswd = (?) WHERE user_id= '$id';";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)){
             header("location:  ../Home/cabinet.php?error=updatefailed");
@@ -139,7 +139,7 @@ function changePwd($conn, $oldPwd, $password1, $password2){
 
 function getuserbyid($conn, $id)
 {
-    $sql = "SELECT * FROM users WHERE id ='$id'";
+    $sql = "SELECT * FROM users WHERE user_id ='$id'";
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         return $row;
@@ -192,7 +192,10 @@ function getresourcesbytype($conn, $type)
 
 function deleteResourceById($conn, $id)
 {
-    $sql = "DELETE FROM all_stuff  WHERE product_id='$id'" ;
+    require_once 'dbh.php';
+    $id = $_SESSION["id"];
+
+    $sql = "DELETE FROM all_stuff  WHERE product_id='$id' and user_id='$id'";
     $conn->query($sql);
 }
 function canInsert()
@@ -320,8 +323,6 @@ function createTable($resourceType = false, $isMaintenance = false)
             $itemId = str_replace("_x", "", $itemId);
             $rowIndex = getRowIndexById($_SESSION["connection"],  $itemId,!$isMaintenance, $resourceType);
 
-            var_dump($resourceType);
-            var_dump($isMaintenance);
             echo '<script>alterRowById(' . $itemId . ', ' . $rowIndex["num"] . ', ' . $ignoreType .')</script>';
             break;
         } else if (strpos($postItem, "new") !== false) {

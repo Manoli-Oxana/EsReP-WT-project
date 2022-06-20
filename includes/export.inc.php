@@ -8,7 +8,6 @@ $result = mysqli_query($conn, $query);
 
 
 if(isset($_POST["exportCsv"])){
-    $succes = 0;
     $delimiter = ",";
         $filename = "supplies-data_" . date('Y-m-d') . ".csv";
 
@@ -24,7 +23,7 @@ if(isset($_POST["exportCsv"])){
             $lineData = array($row['name'], $row['quantity'], $row['unit'], $row['type'], $row['supply'], $row['notice'] );
             fputcsv($f, $lineData, $delimiter);
         }
-        $succes =1;
+      
     }
 
 
@@ -40,7 +39,6 @@ if(isset($_POST["exportCsv"])){
     fpassthru($f);
 }
 else if(isset($_POST["exportJson"])){
-    $succes = 0;
    
     $filename = "supplies-data_" . date('Y-m-d') . ".json";
     $f = fopen('php://memory', 'w');
@@ -69,7 +67,7 @@ else if(isset($_POST["exportJson"])){
     
 }
 else if(isset($_POST["exportXml"])){
-    $succes = 0;
+
 
     $filename = "supplies-data_" . date('Y-m-d') . ".xml";
     $f = fopen('php://memory', 'w');
