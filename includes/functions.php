@@ -339,10 +339,10 @@ function createTable($resourceType = false, $isMaintenance = false)
     }
 }
 function notice($id){
-    //session_name("");
+    session_name("");
     require_once 'dbh.php';
 
-    $query_notice_check = "SELECT name FROM all_stuff WHERE user_id='$id' AND notice <= CURRENT_DATE;";
+    $query_notice_check = "SELECT name FROM all_stuff WHERE id='$id' AND notice <= CURRENT_DATE;";
     $result = mysqli_query($conn, $query_notice_check);
     $count = mysqli_num_rows($result);
     $list = "";
@@ -378,6 +378,7 @@ function notice($id){
 
     }
 }
+
 
 function getNrOfSuppliesByMonth($month){
     require_once 'dbh.php';
