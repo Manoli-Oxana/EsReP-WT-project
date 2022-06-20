@@ -341,8 +341,9 @@ function createTable($resourceType = false, $isMaintenance = false)
 function notice($id){
     session_name("");
     require_once 'dbh.php';
+    $conn= $_SESSION["connection"];
 
-    $query_notice_check = "SELECT name FROM all_stuff WHERE id='$id' AND notice <= CURRENT_DATE;";
+    $query_notice_check = "SELECT name FROM all_stuff WHERE user_id='$id' AND notice <= CURRENT_DATE;";
     $result = mysqli_query($conn, $query_notice_check);
     $count = mysqli_num_rows($result);
     $list = "";
@@ -370,9 +371,9 @@ function notice($id){
         window.onload = function(){ alert(message);} 
         </script>';
 
-        $fetch_mail = mysqli_query($conn, "SELECT mail FROM users WHERE id ='$id'");
+        /*$fetch_mail = mysqli_query($conn, "SELECT mail FROM users WHERE id ='$id'");
         $rowData = mysqli_fetch_assoc($fetch_mail);
-        $email = "".$rowData["mail"];
+        $email = "".$rowData["mail"];*/
 
         //mail($email, "ESREP Notice!", $message);
 

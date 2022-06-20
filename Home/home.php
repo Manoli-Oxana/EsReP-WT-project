@@ -1,12 +1,8 @@
 <?php
-    require '../includes/functions.php';
+    require_once '../includes/functions.php';
     if(!session_id()){
         session_start();
     }
-    ini_set('display_errors','Off');
-    $id = session_id();
-
-    notice($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,72 +54,78 @@
             <h3>Statistics</h3> 
             <canvas id="myBarChart" style="width:100%;max-width:1000px"></canvas>
             <canvas id="myPieChart" style="width:100%;max-width:1000px"></canvas>
-            <?php
-              require_once '../includes/functions.php';
-              $month1= getNrOfSuppliesByMonth(1);
-              $month2= getNrOfSuppliesByMonth(2);
-              $month3= getNrOfSuppliesByMonth(3);
-              $month4= getNrOfSuppliesByMonth(4);
-              $month5= getNrOfSuppliesByMonth(5);
-              $month6= getNrOfSuppliesByMonth(6);
-              $month7= getNrOfSuppliesByMonth(7);
-              $month8= getNrOfSuppliesByMonth(8);
-              $month9= getNrOfSuppliesByMonth(9);
-              $month10= getNrOfSuppliesByMonth(10);
-              $month11= getNrOfSuppliesByMonth(11);
-              $month12= getNrOfSuppliesByMonth(12);
-              $food = getNrOfSuppliesByType("food");
-              $fuel = getNrOfSuppliesByType("fuel");
-              $makeUp = getNrOfSuppliesByType("make-up");
-              $medicine = getNrOfSuppliesByType("medicine");
-              $office = getNrOfSuppliesByType("office-supplies");
-              $check = getNrOfSuppliesByType("check-up");
-              $insurance = getNrOfSuppliesByType("insurance");
-              $spare = getNrOfSuppliesByType("spare-parts");
-            ?>
-            <script>
-              var xValuesBar = ["January", "February", "March", "April ", "May ", "June", "July ", "August", "September ","October", "November ", "December"];
-              var yValuesBar = [<?php echo"$month1"?>, <?php echo"$month2"?>,<?php echo"$month3"?>,<?php echo"$month4"?>, <?php echo"$month5"?>, <?php echo"$month6"?>, <?php echo"$month7"?>, <?php echo"$month8"?>, <?php echo"$month9"?>, <?php echo"$month10"?>, <?php echo"$month11"?>, <?php echo"$month12"?>];
 
-              var barColors = ["red", "green","blue","orange","brown","blue","orange","brown","blue","orange","brown","blue" ];
-              new Chart("myBarChart", {
-                type: "bar",
-                data: {
-                  labels: xValuesBar,
-                  datasets: [{
-                    backgroundColor: barColors,
-                    data: yValuesBar
-                  }]
-                },
-                options: {
-                  legend: {display: false},
-                  title: {
-                    display: true,
-                    text: "Numbers of set notices for yeach month"
-                  }
-                }
-              });
 
-                var xValuesPie = ["Food", "Fuel", "Make-Up", "Medicine", "Office Supplies", "Check-Ups", "Insurance", "Spare Parts"];
-                var yValuesPie = [<?php echo"$food"?>, <?php echo"$fuel"?>,<?php echo"$makeUp"?>,<?php echo"$medicine"?>, <?php echo"$office"?>, <?php echo"$check"?>, <?php echo"$insurance"?>, <?php echo"$spare"?>];
+<?php
+  require_once '../includes/functions.php';
+  $month1= getNrOfSuppliesByMonth(1);
+  $month2= getNrOfSuppliesByMonth(2);
+  $month3= getNrOfSuppliesByMonth(3);
+  $month4= getNrOfSuppliesByMonth(4);
+  $month5= getNrOfSuppliesByMonth(5);
+  $month6= getNrOfSuppliesByMonth(6);
+  $month7= getNrOfSuppliesByMonth(7);
+  $month8= getNrOfSuppliesByMonth(8);
+  $month9= getNrOfSuppliesByMonth(9);
+  $month10= getNrOfSuppliesByMonth(10);
+  $month11= getNrOfSuppliesByMonth(11);
+  $month12= getNrOfSuppliesByMonth(12);
+  $food = getNrOfSuppliesByType("food");
+  $fuel = getNrOfSuppliesByType("fuel");
+  $makeUp = getNrOfSuppliesByType("make-up");
+  $medicine = getNrOfSuppliesByType("medicine");
+  $office = getNrOfSuppliesByType("office-supplies");
+  $check = getNrOfSuppliesByType("check-up");
+  $insurance = getNrOfSuppliesByType("insurance");
+  $spare = getNrOfSuppliesByType("spare-parts");
+?>
+<script>
+    
+   
+var xValuesBar = ["January", "February", "March", "April ", "May ", "June", "July ", "August", "September ","October", "November ", "December"];
+var yValuesBar = [<?php echo"$month1"?>, <?php echo"$month2"?>,<?php echo"$month3"?>,<?php echo"$month4"?>, <?php echo"$month5"?>, <?php echo"$month6"?>, <?php echo"$month7"?>, <?php echo"$month8"?>, <?php echo"$month9"?>, <?php echo"$month10"?>, <?php echo"$month11"?>, <?php echo"$month12"?>];
 
-              new Chart("myPieChart", {
-                type: "pie",
-                data: {
-                  labels: xValuesPie,
-                  datasets: [{
-                    backgroundColor: barColors,
-                    data: yValuesPie
-                  }]
-                },
-                options: {
-                  title: {
-                  display: true,
-                  text: "Numbers of added Types"
-                  }
-                }
-              });
-            </script> 
+var barColors = ["#ea5545", "#f46a9b", "#ef9b20", "#edbf33", "#ede15b", "#bdcf32", "#87bc45", "#27aeef", "#b33dc6", "#b30000", "#7c1158", "#4421af"];
+new Chart("myBarChart", {
+  type: "bar",
+  data: {
+    labels: xValuesBar,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValuesBar
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Numbers of set notices for yeach month"
+    }
+  }
+});
+
+var xValuesPie = ["Food", "Fuel", "Make-Up", "Medicine", "Office Supplies", "Check-Ups", "Insurance", "Spare Parts"];
+var yValuesPie = [<?php echo"$food"?>, <?php echo"$fuel"?>,<?php echo"$makeUp"?>,<?php echo"$medicine"?>, <?php echo"$office"?>, <?php echo"$check"?>, <?php echo"$insurance"?>, <?php echo"$spare"?>];
+
+new Chart("myPieChart", {
+  type: "pie",
+  data: {
+    labels: xValuesPie,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValuesPie
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Numbers of added Types"
+    }
+  }
+});
+
+</script>
+            
         </div>
     </main>
     <?php 
