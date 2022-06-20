@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
     <title>EsReP</title>
 </head>
 <body>
@@ -37,15 +38,23 @@
         <div id="rightmenu">
             <h3>About the app</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta dolor faucibus, ultricies nibh vitae, vestibulum odio. Ut dictum at enim nec efficitur. In sit amet pretium nibh. Vestibulum vehicula a mauris in sagittis. Nullam vel lorem sapien. Ut ut malesuada ipsum. In vel enim a risus volutpat consectetur. Donec vitae turpis aliquet, sollicitudin erat id, iaculis erat. In hac habitasse platea dictumst. Donec dapibus metus ut arcu sollicitudin ultrices. Nunc nec auctor nunc, et lobortis mauris. Pellentesque non lorem iaculis, placerat nunc id, tincidunt lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vulputate urna nec pretium laoreet. Etiam ac purus non mauris ultricies pellentesque. Curabitur interdum sit amet dolor in interdum.
-    
-                Sed aliquam neque ultricies ante eleifend pretium vitae non leo. Donec non dictum turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum ut diam at dapibus. Mauris quam metus, tempus ac mi sit amet, rhoncus bibendum nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id sem metus. Phasellus feugiat massa a lacus egestas sollicitudin. Donec aliquam vehicula tincidunt. Sed vel ante volutpat, dictum nulla in, maximus augue. Etiam vestibulum purus justo, vitae finibus nulla convallis rhoncus. Vestibulum tortor nulla, tincidunt et accumsan id, lobortis ut enim.
+                ESReP was created to help people keep track of their necessities. From individual use, to household needs and organisational resources, ESReP allows its users to upload their previous databases, be they in XML, CSV or JSON to use with the app, edit their databases, edit their notice dates and even delete entries.
+                Setting the notice date will allow the app to notify you with an in-app alert about the entries that either need replenished or a check-up. ESReP also provides the useful export function in the aforementioned formats, for those who want to save monthly or daily snopshots of their resources.
             </p>
             <h3>How to Use</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta dolor faucibus, ultricies nibh vitae, vestibulum odio. Ut dictum at enim nec efficitur. In sit amet pretium nibh. Vestibulum vehicula a mauris in sagittis. Nullam vel lorem sapien. Ut ut malesuada ipsum. In vel enim a risus volutpat consectetur. Donec vitae turpis aliquet, sollicitudin erat id, iaculis erat. In hac habitasse platea dictumst. Donec dapibus metus ut arcu sollicitudin ultrices. Nunc nec auctor nunc, et lobortis mauris. Pellentesque non lorem iaculis, placerat nunc id, tincidunt lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vulputate urna nec pretium laoreet. Etiam ac purus non mauris ultricies pellentesque. Curabitur interdum sit amet dolor in interdum.
-    
-                Sed aliquam neque ultricies ante eleifend pretium vitae non leo. Donec non dictum turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum ut diam at dapibus. Mauris quam metus, tempus ac mi sit amet, rhoncus bibendum nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id sem metus. Phasellus feugiat massa a lacus egestas sollicitudin. Donec aliquam vehicula tincidunt. Sed vel ante volutpat, dictum nulla in, maximus augue. Etiam vestibulum purus justo, vitae finibus nulla convallis rhoncus. Vestibulum tortor nulla, tincidunt et accumsan id, lobortis ut enim.
+                In order to use the ESReP web application, the following steps are recomended:
+                <ol>
+                    <li>Create an account through register or log in with your credentials if you already have an account</li>
+                    <li>If you already have a database of resources in XML, JSON or CSV format, upload them using the Import function</li>
+                    <li>Add to the databases and/or eddit/delete the entries in their respective type's tables. Don't forget to refresh the page!</li>
+                    <li>Keep the database up-to-date on the quantity or dates</li>
+                    <li>Once a notify deadline is reached, logging into the app will open an alert with the list of entries you need to check on. Don't forget to edit the notice date in order to stop the alert</li>
+                    <li>The home page will also provide a bar chart of the number of notices in each month and a pie chart of type specific entries</li>
+                    <li>In case a snapshot is needed, the export function can download the current database in a XML, JSON or CSV</li>
+                    <li>My Cabinet allows you to change the password and log out of the account</li>
+                </ol>
+
             </p>
         </div>
     </main>

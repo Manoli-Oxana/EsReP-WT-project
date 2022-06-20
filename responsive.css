@@ -1,69 +1,70 @@
-:root{
-    --bejdarinchis:#302823;
-    --megabej:#FFF2EB;
-    --fiftyshadesofbej:#E8CFBF;
-    --mentauscata: #65B8B5;
-    --minialbastru:#BEE7E8;
-}
-
-@media (max-width: 1000px) {
-    .leftmenu{
-        width: 100%;
-        text-align: center;
-    }
-    .leftmenu ul{
-        padding-left: 0%;
-    }
-
-    .leftmenu a{
-        margin-left: 0%
-    }
-    .leftmenu ul li a{
-        border-style: solid;
-        border-radius: 5%;
-        color: var(--bejdarinchis);
-        padding: 1%;
-        margin: 0.5% 0;
-        border: 1%;
-        cursor: pointer;
-        opacity: 0.9;
-        font-size: large;
-    }
-
-
-
-    .leftmenu ul li a:hover{
-        opacity:1;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-    .right{
-        width: 100%;
-    }
-    main{
-        flex-wrap: wrap;
-    }
-}
-
-@media (max-width: 830px){
-    header a {
-        margin-left: 0%;
-    }
-}
-
-@media (max-width: 630px){
-    header a {
-        margin-left: 2.75rem;
-    }
-}
-
-@media (max-width: 569px){
-    header a {
-        margin-left: 20%;
-    }
-}
-
-@media (max-width: 450px){
-    header a {
-        margin-left: 10%;
-    }
-}
+ :root{
+     --bejdarinchis:#302823;
+     --megabej:#FFF2EB;
+     --fiftyshadesofbej:#E8CFBF;
+     --mentauscata: #65B8B5;
+     --minialbastru:#BEE7E8;
+ }
+ 
+ @media (max-width: 1000px) {
+     .leftmenu{
+         width: 100%;
+         text-align: center;
+     }
+     .leftmenu ul{
+         padding-left: 0%;
+     }
+ 
+     .leftmenu a{
+         margin-left: 0%
+     }
+     .leftmenu ul li a{
+         border-style: solid;
+         border-radius: 5%;
+         color: var(--bejdarinchis);
+         padding: 1%;
+         margin: 0.5% 0;
+         border: 1%;
+         cursor: pointer;
+         opacity: 0.9;
+         font-size: large;
+     }
+ 
+ 
+ 
+     .leftmenu ul li a:hover{
+         opacity:1;
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     }
+     .right{
+         width: 100%;
+     }
+     main{
+         flex-wrap: wrap;
+     }
+ }
+ 
+ @media (max-width: 830px){
+     header a {
+         margin-left: 0%;
+     }
+ }
+ 
+ @media (max-width: 630px){
+     header a {
+         margin-left: 2.75rem;
+     }
+ }
+ 
+ @media (max-width: 569px){
+     header a {
+         margin-left: 20%;
+     }
+ }
+ 
+ @media (max-width: 450px){
+     header a {
+         margin-left: 10%;
+     }
+ }
+ 

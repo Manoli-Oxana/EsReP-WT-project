@@ -339,7 +339,7 @@ function createTable($resourceType = false, $isMaintenance = false)
     }
 }
 function notice($id){
-    session_name("");
+    //session_name("");
     require_once 'dbh.php';
 
     $query_notice_check = "SELECT name FROM all_stuff WHERE user_id='$id' AND notice <= CURRENT_DATE;";
@@ -381,14 +381,30 @@ function notice($id){
 
 function getNrOfSuppliesByMonth($month){
     require_once 'dbh.php';
-   $conn= $_SESSION["connection"];
-   $id = $_SESSION["id"];
+    $conn= $_SESSION["connection"];
+    $id = $_SESSION["id"];
 
     $query = "SELECT count(*) from all_stuff where user_id='$id' and MONTH(notice) = '$month'";
     $queryMonth = mysqli_query($conn, $query) ;
     $rowData = mysqli_fetch_array($queryMonth);
     $value= intVal($rowData["count(*)"]);
-      
+
+    if($rowData == NULL)
+        return 0;
+
+    return $value;
+}
+
+function getNrOfSuppliesByType($type){
+    require_once 'dbh.php';
+    $conn= $_SESSION["connection"];
+    $id = $_SESSION["id"];
+
+    $query="SELECT count(*) from all_stuff where user_id='$id' and  type = '$type'";
+    $numType= mysqli_query($conn, $query);
+    $rowData = mysqli_fetch_array($numType);
+    $value= intVal($rowData["count(*)"]);
+
     if($rowData == NULL)
         return 0;
 

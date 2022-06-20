@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../responsive.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     </script>
     <title>EsReP</title>
@@ -51,7 +52,9 @@
         </div>
         <div class="right">
             <h3>Statistics</h3> 
-            <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+            <canvas id="myBarChart" style="width:100%;max-width:1000px"></canvas>
+            <canvas id="myPieChart" style="width:100%;max-width:1000px"></canvas>
+
 
 <?php
   require_once '../includes/functions.php';
@@ -67,32 +70,56 @@
   $month10= getNrOfSuppliesByMonth(10);
   $month11= getNrOfSuppliesByMonth(11);
   $month12= getNrOfSuppliesByMonth(12);
-
-  
+  $food = getNrOfSuppliesByType("food");
+  $fuel = getNrOfSuppliesByType("fuel");
+  $makeUp = getNrOfSuppliesByType("make-up");
+  $medicine = getNrOfSuppliesByType("medicine");
+  $office = getNrOfSuppliesByType("office-supplies");
+  $check = getNrOfSuppliesByType("check-up");
+  $insurance = getNrOfSuppliesByType("insurance");
+  $spare = getNrOfSuppliesByType("spare-parts");
 ?>
 <script>
     
    
-var xValues = ["January", "February", "March", "April ", "May ", "June", "July ", "August", "September ","October", "November ", "December"];
-var x = "<?php echo"$month1"?>";
-var_dump(x);
-var yValues = [$month1, $month2,$month3, $month4, $month5, $month6, $month7, $month8, $month9, $month10, $month11, $month12];
+var xValuesBar = ["January", "February", "March", "April ", "May ", "June", "July ", "August", "September ","October", "November ", "December"];
+var yValuesBar = [<?php echo"$month1"?>, <?php echo"$month2"?>,<?php echo"$month3"?>,<?php echo"$month4"?>, <?php echo"$month5"?>, <?php echo"$month6"?>, <?php echo"$month7"?>, <?php echo"$month8"?>, <?php echo"$month9"?>, <?php echo"$month10"?>, <?php echo"$month11"?>, <?php echo"$month12"?>];
 
 var barColors = ["red", "green","blue","orange","brown","blue","orange","brown","blue","orange","brown","blue" ];
-new Chart("myChart", {
+new Chart("myBarChart", {
   type: "bar",
   data: {
-    labels: xValues,
+    labels: xValuesBar,
     datasets: [{
       backgroundColor: barColors,
-      data: yValues
+      data: yValuesBar
     }]
   },
   options: {
     legend: {display: false},
     title: {
       display: true,
-      text: "Products that "
+      text: "Numbers of set notices for yeach month"
+    }
+  }
+});
+
+var xValuesPie = ["Food", "Fuel", "Make-Up", "Medicine", "Office Supplies", "Check-Ups", "Insurance", "Spare Parts"];
+var yValuesPie = [<?php echo"$food"?>, <?php echo"$fuel"?>,<?php echo"$makeUp"?>,<?php echo"$medicine"?>, <?php echo"$office"?>, <?php echo"$check"?>, <?php echo"$insurance"?>, <?php echo"$spare"?>];
+
+new Chart("myPieChart", {
+  type: "pie",
+  data: {
+    labels: xValuesPie,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValuesPie
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Numbers of added Types"
     }
   }
 });
@@ -102,8 +129,10 @@ new Chart("myChart", {
         </div>
     </main>
     <?php 
-        ini_set('display_errors','Off');
         $id = $_SESSION["id"];
+        require_once '../includes/functions.php';
+        ini_set('display_errors','Off');
+        
         notice($id);
         ?>
 </body>

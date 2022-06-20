@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../responsive.css">
     <title>EsReP</title>
 </head>
 <body>
@@ -25,9 +26,13 @@
         <div class="rightmenu">
             <h3>Maintenance</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta dolor faucibus, ultricies nibh vitae, vestibulum odio. Ut dictum at enim nec efficitur. In sit amet pretium nibh. Vestibulum vehicula a mauris in sagittis. Nullam vel lorem sapien. Ut ut malesuada ipsum. In vel enim a risus volutpat consectetur. Donec vitae turpis aliquet, sollicitudin erat id, iaculis erat. In hac habitasse platea dictumst. Donec dapibus metus ut arcu sollicitudin ultrices. Nunc nec auctor nunc, et lobortis mauris. Pellentesque non lorem iaculis, placerat nunc id, tincidunt lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vulputate urna nec pretium laoreet. Etiam ac purus non mauris ultricies pellentesque. Curabitur interdum sit amet dolor in interdum.
-    
-                Sed aliquam neque ultricies ante eleifend pretium vitae non leo. Donec non dictum turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum ut diam at dapibus. Mauris quam metus, tempus ac mi sit amet, rhoncus bibendum nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id sem metus. Phasellus feugiat massa a lacus egestas sollicitudin. Donec aliquam vehicula tincidunt. Sed vel ante volutpat, dictum nulla in, maximus augue. Etiam vestibulum purus justo, vitae finibus nulla convallis rhoncus. Vestibulum tortor nulla, tincidunt et accumsan id, lobortis ut enim.
+                The Maintenance category is divided into 3 main types.
+                <ul>
+                    <li>Check Up  is oriented for keeping track of when the last machinery/medical check-ups were done. From the last oil change
+                    with a notice 6 months from that, to a yearly blood test that always slips the mind, this type is flexible in its use. </li>
+                    <li>Insurance provides support for any type of legal documentation that requires regular updates, so the police isn't the one to remind you of your expired insurance.</li>
+                    <li>Spare Parts was created for those who are always running out of motherboards, SSDs and other nicknacks that may seem unimportant, but are higly vital for a great repair job</li>
+                </ul> 
             </p>
         </div>
     <main>

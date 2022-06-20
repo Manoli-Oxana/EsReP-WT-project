@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../responsive.css">
     <title>EsReP</title>
 </head>
 <body>
@@ -25,9 +26,15 @@
         <div class="rightmenu">
             <h3>Resources</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta dolor faucibus, ultricies nibh vitae, vestibulum odio. Ut dictum at enim nec efficitur. In sit amet pretium nibh. Vestibulum vehicula a mauris in sagittis. Nullam vel lorem sapien. Ut ut malesuada ipsum. In vel enim a risus volutpat consectetur. Donec vitae turpis aliquet, sollicitudin erat id, iaculis erat. In hac habitasse platea dictumst. Donec dapibus metus ut arcu sollicitudin ultrices. Nunc nec auctor nunc, et lobortis mauris. Pellentesque non lorem iaculis, placerat nunc id, tincidunt lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vulputate urna nec pretium laoreet. Etiam ac purus non mauris ultricies pellentesque. Curabitur interdum sit amet dolor in interdum.
-    
-                Sed aliquam neque ultricies ante eleifend pretium vitae non leo. Donec non dictum turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum ut diam at dapibus. Mauris quam metus, tempus ac mi sit amet, rhoncus bibendum nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id sem metus. Phasellus feugiat massa a lacus egestas sollicitudin. Donec aliquam vehicula tincidunt. Sed vel ante volutpat, dictum nulla in, maximus augue. Etiam vestibulum purus justo, vitae finibus nulla convallis rhoncus. Vestibulum tortor nulla, tincidunt et accumsan id, lobortis ut enim.
+                The Resources category is focused on quantifiable entries that are more common in day-to-day life.
+                <ul>
+                    <li>Food is an always up to date shopping list and a useful tool in keeping the inventory stock full.</li>
+                    <li>Fuel keeps track of both the liquid type like gasoline, and the solid ones, like wood, coal so you don't have to worry of running out and freezing this winter.</li>
+                    <li>Medicine allows the user to know which medicine they have to stock up on in the winter season without having to dig up and rearange the medicine drawer.</li>
+                    <li>Office Supplies provides the necessary logistic support for companies and the unfortunate souls that trick their brain into believing they are productive.</li>
+                    <li>Tools was created for DIY-ers that always seem to be running out of screws, nails, and even hammers or drills.</li>
+                    <li>Make-Up subcategory is a must for any make-up lover that has a hard time remembering the expiration dates of their vast make-up collection.</li>
+                </ul>
             </p>
         </div>
     <main>
