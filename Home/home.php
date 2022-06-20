@@ -1,8 +1,12 @@
 <?php
-    require_once '../includes/functions.php';
+    require '../includes/functions.php';
     if(!session_id()){
         session_start();
     }
+    ini_set('display_errors','Off');
+    $id = session_id();
+
+    notice($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,11 +59,6 @@
             <canvas id="myBarChart" style="width:100%;max-width:1000px"></canvas>
             <canvas id="myPieChart" style="width:100%;max-width:1000px"></canvas>
             <?php
-              ini_set('display_errors','Off');
-              $id = $_SESSION["id"];
-              require '../includes/functions.php';
-
-              notice($id);
               require_once '../includes/functions.php';
               $month1= getNrOfSuppliesByMonth(1);
               $month2= getNrOfSuppliesByMonth(2);
