@@ -37,9 +37,12 @@
                     <li>
                         <a href="#environment">Operating Environment</a>
                     </li>
-                    <!--<li>
+                    <li>
+                        <a href="#constrains">Design and Implementation Constraints</a>
+                    </li> 
+                    <li>
                         <a href="#doc">User Documentation</a>
-                    </li> -->  
+                    </li>
                     <li>
                         <a href="#ass_dep">Assumptions and Dependencies</a>
                     </li>
@@ -48,6 +51,9 @@
             <li>
                 <a href="#ExtIfReq">External Interface Requirements</a>
                 <ol>
+                    <li>
+                        <a href="#user_interface">User Interfaces</a>
+                    </li>
                     <li>
                         <a href="#comIf">Communication Interfaces</a>
                     </li>
@@ -67,17 +73,6 @@
                     </li>
                     <li>
                         <a href="#appnotices">In-app Notices</a>
-                    </li>
-                    <li>
-                        <a href="#emailnotices">Email Notices</a>
-                    </li>
-                </ol>
-            </li>
-            <li>
-                <a href="#nonfuncreq">Other Nonfunctional Requirements</a>
-                <ol>
-                    <li>
-                        <a href="#security">Security Requirements</a>
                     </li>
                 </ol>
             </li>
@@ -159,7 +154,7 @@
                             <li> can access the home page</li>
                             <li>can access the databases they have imported</li>
                             <li>can import and export databases</li>
-                            <li>can generate statistic</li>
+                            <li>can generate/download statistic</li>
                             <li>can set time-limits and reminders</li>
                             <li>can access the personal cabinet where they can change their personal data</li>
                         </ul>
@@ -174,9 +169,23 @@
             </h3>
             <p>The operating environment for the app will be any browser with support for HTML5 (FireFox, Chrome, Safari, etc.) on any operating system. (Mindows, Mac OS, etc.)</p>
         </section>
+        <section id="constrains">
+            <h3>
+                <span>2.4</span>
+                Design and Implementation Constraints
+            </h3>
+            <p>Developers have encountered problems with sending notice emails through Gmail because of their update security policies. </p>
+        </section>
+        <section id="doc">
+            <h3>
+                <span>2.5</span>
+                User Documentation
+            </h3>
+            <p>The users of the application will have informations about the features of the app and how to use it properly on the landing page. Such information are: how to insert/delete/update their supplies manually into database, how to import/export their data using defined format, how to change their password and downloading statistics.  </p>
+        </section>
         <section id="ass_dep">
             <h3>
-                <span>2.5 </span>
+                <span>2.6 </span>
                 Assumptions and Dependencies
             </h3>
             <p>To make possible the import/export feature, an <a href="https://onlinecode.org/open-source-pdf-generation-libraries-php/">additional library</a> will be selected from the available open source ones.</p>
@@ -187,8 +196,16 @@
             <span>3. </span>
             External Interface Requirements
         </h2>
+        <section id="user_interface">
+            <h3>
+                <span>3.1</span>
+                User Interfaces</h3>
+            <p>The application interface provides easy-to-use buttons (save, edit, delete, update). It also provides notifications regarding the resupply date of each item and error messages when inserting wrong type of data (inserting wrong email, password, data fields and attributes);  </p>
+        </section>
         <section id="comIf">
-            <h3>Communication Interfaces</h3>
+            <h3>
+                <span>3.2</span>
+                Communication Interfaces</h3>
             <p>In order to ensure comunication, the web application will use Hypertext Transfer Protocol (HTTP)</p>
         </section>
     </section>
@@ -202,7 +219,7 @@
                 <span>4.1 </span>
                 Import Data
             </h3>
-            <p>The user will be able to import data if they already have a CSV/XML database of the items they want to keep track of and/or introduce the data manually.
+            <p>The user will be able to import data if they already have a CSV/XML/JSON format (having  the following attributes -> name, quantity, unit, type, supply, notice ) of the items they want to keep track of and/or introduce the data manually.
             </p>
         </section>
         <section id="export">
@@ -210,28 +227,21 @@
                 <span>4.2 </span>
                 Export Data
             </h3>
-            <p>The user will be able to export the data they have introduced into the app’s database as CSV/XML file.</p>
+            <p>The user will be able to export the data they have introduced into the app’s database as CSV/XML/JSON file, having the same attributes.</p>
         </section>
         <section id="statistics">
             <h3>
                 <span>4.3 </span>
                 Generate Statistics
             </h3>
-            <p>The user will have the option to generate statistics based on their data and view them as HTML or PDF files.</p>
+            <p>The user will have the option to generate statistics based on number of noticies in each month and the number of supplies in the Resource category (Food, Fuel, Make-Up, Tools, Medicine, Office Supplies) or Maintenance category(Spare Parts, Insurance, Check Up) and view them as HTML or PDF files.</p>
         </section>
         <section id="appnotices">
             <h3>
                 <span>4.4 </span>
                 In-app Notices
             </h3>
-            <p>The app will provide in-app notices about updates and/or necessary maintenance.</p>
-        </section>
-        <section id="emailnotices">
-            <h3>
-                <span>4.5 </span>
-                Email Notices
-            </h3>
-            <p>The app will send out emails to the users to remind them of necessary updates and/or maintenance.</p>
+            <p>The application will provide in-app pop-up notices of the list of items from each category that exceeded their notice deadline for resupply and/or necessary maintenance.</p>
         </section>
     </section>
 </body>
